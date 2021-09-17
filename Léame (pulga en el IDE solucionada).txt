@@ -1,0 +1,14 @@
+Este IDE fue desarrollado en su totalidad por Luis Leopoldo Pérez.  La pulga fue corregida por Pablo Navarro Altamirano y Jimmy Fallas Delgado durante el segundo semestre del 2017, en el curso 'Compiladores e intérpretes' (IC-5701).
+
+Descripción de la pulga, según reporte de Jorge Loría Solano y Luis Diego Ruiz Vega:
+"El problema se da cuando se selecciona un carácter y se sobrescribe con otro, el IDE no detecta que el documento haya cambiado y al compilar, se compila sobre el documento anterior sin tomar en cuenta el nuevo cambio.
+	
+El problema se da por que el IDE detecta un cambio en el documento cuando el mismo cambia de tamaño (se añade o se borra algún carácter), pero en el caso de sobrescribir un carácter esto no cambia el tamaño y por tanto al compilar no se almacenan los cambio."
+
+Solución implementada:
+Para comprobar si el documento ha sido modificado no solamente evaluamos la extensión de caracteres (como anteriormente se efectuaba, al borrar o agregar caracteres), ahora también se compara la hilera de caracteres para saber si hay caracteres distintos entre el documento anterior y el nuevo.
+
+- - -
+Agradezco a los estudiantes Pablo Navarro Altamirano y Jimmy Fallas Delgado por corregir el defecto de una manera conveniente.
+
+Prof. Ignacio Trejos Zelaya
