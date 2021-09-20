@@ -108,10 +108,12 @@ final class Token extends Object {
     RBRACKET	        = 39,
     LCURLY		= 40,
     RCURLY		= 41,
+    LINE                = 42,
+    DOUBLEDOTS          = 43,
 
     // special tokens...
-    EOT			= 42,
-    ERROR		= 43;
+    EOT			= 44,
+    ERROR		= 45;
 
   private static String[] tokenTable = new String[] {
     "<int>",
@@ -119,7 +121,6 @@ final class Token extends Object {
     "<identifier>",
     "<operator>",
     "array",
-    "begin",
     "const",
     "do",
     "else",
@@ -157,6 +158,8 @@ final class Token extends Object {
     "]",
     "{",
     "}",
+    "|",
+    "..",
     "",
     "<error>"
   };

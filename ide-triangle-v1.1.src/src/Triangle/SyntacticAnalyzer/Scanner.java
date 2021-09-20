@@ -137,8 +137,10 @@ public final class Scanner {
       if (currentChar == '=') {
         takeIt();
         return Token.BECOMES;
-      } else
-        return Token.COLON;
+      } else {
+            System.out.println(Token.COLON);
+            return Token.COLON;
+        }
 
     case ';':
       takeIt();

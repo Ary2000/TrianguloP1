@@ -82,6 +82,8 @@ import Triangle.AbstractSyntaxTrees.Vname;
 import Triangle.AbstractSyntaxTrees.VnameExpression;
 import Triangle.AbstractSyntaxTrees.WhileCommand;
 
+import Triangle.AbstractSyntaxTrees.RepeatForRangeCommand;
+
 public class Parser {
 
   private Scanner lexicalAnalyser;
@@ -206,6 +208,7 @@ public class Parser {
 // parseIdentifier parses an identifier, and constructs a leaf AST to
 // represent it.
 
+//acceptit?
   Identifier parseIdentifier() throws SyntaxError {
     Identifier I = null;
 
@@ -293,18 +296,13 @@ public class Parser {
       }
       break;
 
-    case Token.BEGIN:
-      acceptIt();
-      commandAST = parseCommand();
-      accept(Token.END);
-      break;
-
     case Token.LET:
       {
         acceptIt();
         Declaration dAST = parseDeclaration();
         accept(Token.IN);
-        Command cAST = parseSingleCommand();
+        Command cAST = parseCommand();
+        accept(Token.END);
         finish(commandPos);
         commandAST = new LetCommand(dAST, cAST, commandPos);
       }
@@ -315,14 +313,21 @@ public class Parser {
         acceptIt();
         Expression eAST = parseExpression();
         accept(Token.THEN);
-        Command c1AST = parseSingleCommand();
+        Command c1AST = parseCommand();
+        while(currentToken.kind==Token.LINE) {
+            acceptIt();
+            Command extraCmd = parseCommand();
+            //Preguntar sobre commandPos
+            c1AST = new SequentialCommand(c1AST, extraCmd, commandPos);
+        }
         accept(Token.ELSE);
-        Command c2AST = parseSingleCommand();
+        Command c2AST = parseCommand();
+        accept(Token.END);
         finish(commandPos);
         commandAST = new IfCommand(eAST, c1AST, c2AST, commandPos);
       }
       break;
-
+/*
     case Token.WHILE:
       {
         acceptIt();
@@ -333,7 +338,42 @@ public class Parser {
         commandAST = new WhileCommand(eAST, cAST, commandPos);
       }
       break;
-
+*/
+      
+    case Token.REPEAT:
+    {
+        acceptIt();
+        if(currentToken.kind == Token.DO) {
+            acceptIt();
+            Command cAST = parseCommand();
+            if(currentToken.kind == Token.WHILE)
+                acceptIt();
+            else
+                accept(Token.UNTIL);
+            Expression eAST = parseExpression();
+            accept(Token.END);
+            finish(commandPos);
+            //commandAST = new
+        }
+        else {
+            accept(Token.FOR);
+            Identifier iAST = parseIdentifier();
+            if(currentToken.kind == Token.BECOMES){
+                acceptIt();
+                accept(Token.RANGE);
+                Expression eAST1 = parseExpression();
+                accept(Token.DOUBLEDOTS);
+                Expression eAST2 = parseExpression();
+                accept(Token.DO);
+                Command cAST = parseCommand();
+                accept(Token.END);
+                finish(commandPos);
+                commandAST = new RepeatForRangeCommand(iAST, eAST1, eAST2, cAST, commandPos);
+            }
+        }
+    }
+      
+    case Token.SKIP:
     case Token.SEMICOLON:
     case Token.END:
     case Token.ELSE:
