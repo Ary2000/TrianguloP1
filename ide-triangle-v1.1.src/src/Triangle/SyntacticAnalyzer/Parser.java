@@ -371,6 +371,7 @@ public class Parser {
                 commandAST = new RepeatForRangeCommand(iAST, eAST1, eAST2, cAST, commandPos);
             }
         }
+        break;
     }
       
     case Token.SKIP:

@@ -1,6 +1,5 @@
 let
-	var i:Integer
+	var i: Integer
 in
-	i:= 1;
-	putint(i)
+	repeat for i := range 1 .. 5 do putint(i) end
 end
