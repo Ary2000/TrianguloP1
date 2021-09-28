@@ -15,14 +15,22 @@
 package Triangle.AbstractSyntaxTrees;
 
 public interface Visitor {
+   //
+  public abstract Object visitRangeVarDecl(RangeVarDecl ast, Object o); 
 
   // Commands
   public abstract Object visitAssignCommand(AssignCommand ast, Object o);
   public abstract Object visitCallCommand(CallCommand ast, Object o);
   public abstract Object visitEmptyCommand(EmptyCommand ast, Object o);
   public abstract Object visitIfCommand(IfCommand ast, Object o);
-  public abstract Object visitRepeatExpressionCommand(RepeatExpressionCommand ast, Object o);
+  public abstract Object visitRepeatExpressionCommand(RepeatWhileDoCommand ast, Object o);
+  public abstract Object visitRepeatUntilDoCommand(RepeatUntilDoCommand ast, Object o);
+  public abstract Object visitRepeatDoWhileCommand(RepeatDoWhileCommand ast, Object o);
+  public abstract Object visitRepeatDoUntilCommand(RepeatDoUntilCommand ast, Object o);
   public abstract Object visitRepeatForRangeCommand(RepeatForRangeCommand ast, Object o);
+  public abstract Object visitRepeatForRangeWhileCommand(RepeatForRangeWhileCommand ast, Object o);
+  public abstract Object visitRepeatForRangeUntilCommand(RepeatForRangeUntilCommand ast, Object o);
+  public abstract Object visitRepeatForInCommand(RepeatForInCommand ast, Object o);
   public abstract Object visitRepeatInCommand(RepeatInCommand ast, Object o);
   public abstract Object visitLetCommand(LetCommand ast, Object o);
   public abstract Object visitSequentialCommand(SequentialCommand ast, Object o);

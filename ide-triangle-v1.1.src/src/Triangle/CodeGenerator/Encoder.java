@@ -67,9 +67,10 @@ import Triangle.AbstractSyntaxTrees.ProcActualParameter;
 import Triangle.AbstractSyntaxTrees.ProcDeclaration;
 import Triangle.AbstractSyntaxTrees.ProcFormalParameter;
 import Triangle.AbstractSyntaxTrees.Program;
+import Triangle.AbstractSyntaxTrees.RangeVarDecl;
 import Triangle.AbstractSyntaxTrees.RecordExpression;
 import Triangle.AbstractSyntaxTrees.RecordTypeDenoter;
-import Triangle.AbstractSyntaxTrees.RepeatExpressionCommand;
+import Triangle.AbstractSyntaxTrees.RepeatWhileDoCommand;
 import Triangle.AbstractSyntaxTrees.RepeatForRangeCommand;
 import Triangle.AbstractSyntaxTrees.RepeatInCommand;
 import Triangle.AbstractSyntaxTrees.SequentialCommand;
@@ -1004,7 +1005,7 @@ public final class Encoder implements Visitor {
     }
 
     @Override
-    public Object visitRepeatExpressionCommand(RepeatExpressionCommand ast, Object o) {
+    public Object visitRepeatExpressionCommand(RepeatWhileDoCommand ast, Object o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -1015,6 +1016,11 @@ public final class Encoder implements Visitor {
 
     @Override
     public Object visitRepeatInCommand(RepeatInCommand ast, Object o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Object visitRangeVarDecl(RangeVarDecl ast, Object o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

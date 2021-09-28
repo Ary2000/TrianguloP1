@@ -6,19 +6,20 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+
 /**
  *
  * @author Ary
  */
-public class RepeatExpressionCommand extends Command {
-    public RepeatExpressionCommand(Expression eAST, Command cAST, SourcePosition thePosition){
+public class RepeatDoWhileCommand extends Command{
+    public RepeatDoWhileCommand(Command cAST, Expression eAST, SourcePosition thePosition){
         super (thePosition);
-        e = eAST;
         c = cAST;
+        e = eAST;
     }
     
     public Object visit(Visitor v, Object o) {
-    return v.visitRepeatExpressionCommand(this, o);
+    return v.visitRepeatDoWhileCommand(this, o);
   }
     
     Expression e;
