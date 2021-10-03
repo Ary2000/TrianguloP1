@@ -65,9 +65,15 @@ import Triangle.AbstractSyntaxTrees.Program;
 import Triangle.AbstractSyntaxTrees.RangeVarDecl;
 import Triangle.AbstractSyntaxTrees.RecordExpression;
 import Triangle.AbstractSyntaxTrees.RecordTypeDenoter;
+import Triangle.AbstractSyntaxTrees.RepeatDoUntilCommand;
+import Triangle.AbstractSyntaxTrees.RepeatDoWhileCommand;
+import Triangle.AbstractSyntaxTrees.RepeatForInCommand;
 import Triangle.AbstractSyntaxTrees.RepeatWhileDoCommand;
 import Triangle.AbstractSyntaxTrees.RepeatForRangeCommand;
+import Triangle.AbstractSyntaxTrees.RepeatForRangeUntilCommand;
+import Triangle.AbstractSyntaxTrees.RepeatForRangeWhileCommand;
 import Triangle.AbstractSyntaxTrees.RepeatInCommand;
+import Triangle.AbstractSyntaxTrees.RepeatUntilDoCommand;
 import Triangle.AbstractSyntaxTrees.SequentialCommand;
 import Triangle.AbstractSyntaxTrees.SequentialDeclaration;
 import Triangle.AbstractSyntaxTrees.SimpleTypeDenoter;
@@ -974,5 +980,35 @@ public final class Checker implements Visitor {
         ast.E.visit(this, null);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         ast.I.visit(this, null);
         return null;
+    }
+
+    @Override
+    public Object visitRepeatUntilDoCommand(RepeatUntilDoCommand ast, Object o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Object visitRepeatDoWhileCommand(RepeatDoWhileCommand ast, Object o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Object visitRepeatDoUntilCommand(RepeatDoUntilCommand ast, Object o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Object visitRepeatForRangeWhileCommand(RepeatForRangeWhileCommand ast, Object o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Object visitRepeatForRangeUntilCommand(RepeatForRangeUntilCommand ast, Object o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Object visitRepeatForInCommand(RepeatForInCommand ast, Object o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
