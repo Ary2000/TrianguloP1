@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class BinaryOperatorDeclaration extends Declaration {
 
@@ -32,6 +34,16 @@ public class BinaryOperatorDeclaration extends Declaration {
     return v.visitBinaryOperatorDeclaration(this, o);
   }
 
+  @Override
+    public Element conseguirNodes(Document doc) {
+        Element rootElement = doc.createElement("AnyTypeDenoter");
+        rootElement.appendChild(O.conseguirNodes(doc));
+        rootElement.appendChild(ARG1.conseguirNodes(doc));
+        rootElement.appendChild(ARG2.conseguirNodes(doc));
+        rootElement.appendChild(RES.conseguirNodes(doc));
+        return rootElement;
+    }
+  
   public Operator O;
   public TypeDenoter ARG1, ARG2, RES;
 }

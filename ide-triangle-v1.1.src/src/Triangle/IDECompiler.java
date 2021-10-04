@@ -14,7 +14,16 @@ import Triangle.SyntacticAnalyzer.Parser;
 import Triangle.ContextualAnalyzer.Checker;
 import Triangle.CodeGenerator.Encoder;
 
-
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import org.w3c.dom.Attr;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import java.io.File;
 
 /** 
  * This is merely a reimplementation of the Triangle.Compiler class. We need
@@ -39,6 +48,7 @@ public class IDECompiler {
      * @param sourceName Path to the source file.
      * @return True if compilation was succesful.
      */
+    
     public boolean compileProgram(String sourceName) {
         System.out.println("********** " +
                            "Triangle Compiler (IDE-Triangle 1.0)" +
@@ -63,6 +73,23 @@ public class IDECompiler {
                 
                 if (report.numErrors == 0) {
                     //encoder.saveObjectProgram(sourceName.replace(".tri", ".tam"));
+                    try {
+                        DocumentBuilderFactory dbFactory =
+                        DocumentBuilderFactory.newInstance();
+                        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+                        Document doc = dBuilder.newDocument();
+                        
+                        doc.appendChild(rootAST.conseguirNodes(doc));
+                        
+                        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+                        Transformer transformer = transformerFactory.newTransformer();
+                        DOMSource dmSource = new DOMSource(doc);
+                        StreamResult result = new StreamResult(new File("resultado.xml"));
+                        transformer.transform(dmSource, result);
+                        
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     success = true;
                 }
             }

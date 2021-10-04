@@ -21,6 +21,6 @@ public class RepeatWhileDoCommand extends Command {
     return v.visitRepeatExpressionCommand(this, o);
   }
     
-    Expression e;
-    Command c;
+    public Expression e;
+    public Command c;
 }

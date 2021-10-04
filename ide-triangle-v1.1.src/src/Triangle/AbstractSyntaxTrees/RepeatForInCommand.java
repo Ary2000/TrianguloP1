@@ -22,7 +22,7 @@ public class RepeatForInCommand extends Command {
         return v.visitRepeatForInCommand(this, o);
     }
     
-    Identifier I;
-    Expression E;
-    Command C;
+    public Identifier I;
+    public Expression E;
+    public Command C;
 }

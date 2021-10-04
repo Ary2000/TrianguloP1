@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class AssignCommand extends Command {
 
@@ -27,6 +29,14 @@ public class AssignCommand extends Command {
   public Object visit(Visitor v, Object o) {
     return v.visitAssignCommand(this, o);
   }
+  
+  @Override
+    public Element conseguirNodes(Document doc) {
+        Element rootElement = doc.createElement("AnyTypeDenoter");
+        rootElement.appendChild(V.conseguirNodes(doc));
+        rootElement.appendChild(E.conseguirNodes(doc));
+        return rootElement;
+    }
 
   public Vname V;
   public Expression E;

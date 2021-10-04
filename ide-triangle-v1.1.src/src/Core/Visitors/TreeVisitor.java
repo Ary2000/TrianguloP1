@@ -454,7 +454,7 @@ public class TreeVisitor implements Visitor {
 
     @Override
     public Object visitRepeatExpressionCommand(RepeatWhileDoCommand ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return(createBinary("RepeatWhileDo", ast.c, ast.e));
     }
 
     @Override
@@ -464,7 +464,7 @@ public class TreeVisitor implements Visitor {
 
     @Override
     public Object visitRepeatInCommand(RepeatInCommand ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return(createTernary("RepeatInCommand", ast.i, ast.e, ast.c));
     }
 
     @Override
@@ -474,17 +474,17 @@ public class TreeVisitor implements Visitor {
 
     @Override
     public Object visitRepeatUntilDoCommand(RepeatUntilDoCommand ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return(createBinary("RepeatUntilCommand", ast.e, ast.c));
     }
 
     @Override
     public Object visitRepeatDoWhileCommand(RepeatDoWhileCommand ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return (createBinary("RepeatDoWhile", ast.e, ast.c));
     }
 
     @Override
     public Object visitRepeatDoUntilCommand(RepeatDoUntilCommand ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return(createBinary("RepeatDoUntilCommand", ast.e, ast.c));
     }
 
     @Override
@@ -499,6 +499,6 @@ public class TreeVisitor implements Visitor {
 
     @Override
     public Object visitRepeatForInCommand(RepeatForInCommand ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return(createTernary("RepeatForInCommand", ast.I, ast.E, ast.C));
     }
 }

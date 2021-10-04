@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class CallCommand extends Command {
 
@@ -29,6 +31,14 @@ public class CallCommand extends Command {
     return v.visitCallCommand(this, o);
   }
 
+  @Override
+    public Element conseguirNodes(Document doc) {
+        Element rootElement = doc.createElement("CallCommand");
+        rootElement.appendChild(I.conseguirNodes(doc));
+        rootElement.appendChild(APS.conseguirNodes(doc));
+        return rootElement;
+    }
+  
   public Identifier I;
   public ActualParameterSequence APS;
 }

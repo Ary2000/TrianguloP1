@@ -25,7 +25,7 @@ public class RepeatForRangeWhileCommand extends Command{
     return v.visitRepeatForRangeWhileCommand(this, o);
   }
     
-    Identifier I;
-    Expression E1, E2, E3;
-    Command C;
+    public Identifier I;
+    public Expression E1, E2, E3;
+    public Command C;
 }

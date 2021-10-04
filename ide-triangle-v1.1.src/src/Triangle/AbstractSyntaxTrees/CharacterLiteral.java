@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class CharacterLiteral extends Terminal {
 
@@ -26,4 +28,9 @@ public class CharacterLiteral extends Terminal {
     return v.visitCharacterLiteral(this, o);
   }
 
+  @Override
+    public Element conseguirNodes(Document doc) {
+        return doc.createElement("ArrayTypeDenoter");
+    }
+  
 }

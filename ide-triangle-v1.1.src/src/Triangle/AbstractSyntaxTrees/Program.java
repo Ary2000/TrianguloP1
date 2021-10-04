@@ -16,6 +16,17 @@ package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
 
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import org.w3c.dom.Attr;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import java.io.File;
+
 public class Program extends AST {
 
   public Program (Command cAST, SourcePosition thePosition) {
@@ -25,6 +36,12 @@ public class Program extends AST {
 
   public Object visit(Visitor v, Object o) {
     return v.visitProgram(this, o);
+  }
+  
+  public Element conseguirNodes(Document doc) {
+      Element rootElement = doc.createElement("Program");
+      rootElement.appendChild(C.conseguirNodes(doc));
+      return rootElement;
   }
 
   public Command C;

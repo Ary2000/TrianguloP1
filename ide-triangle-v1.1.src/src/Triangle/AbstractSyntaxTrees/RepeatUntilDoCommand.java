@@ -21,6 +21,6 @@ public class RepeatUntilDoCommand extends Command {
     return v.visitRepeatUntilDoCommand(this, o);
   }
     
-    Expression e;
-    Command c;
+    public Expression e;
+    public Command c;
 }
