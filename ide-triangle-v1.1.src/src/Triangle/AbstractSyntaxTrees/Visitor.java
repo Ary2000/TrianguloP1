@@ -116,4 +116,6 @@ public interface Visitor {
   // Programs
   public abstract Object visitProgram(Program ast, Object o);
 
+    public abstract Object visitInVarDecl(InVarDecl ast, Object o);
+
 }

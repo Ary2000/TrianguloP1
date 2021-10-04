@@ -32,6 +32,7 @@ import Triangle.AbstractSyntaxTrees.FuncFormalParameter;
 import Triangle.AbstractSyntaxTrees.Identifier;
 import Triangle.AbstractSyntaxTrees.IfCommand;
 import Triangle.AbstractSyntaxTrees.IfExpression;
+import Triangle.AbstractSyntaxTrees.InVarDecl;
 import Triangle.AbstractSyntaxTrees.IntTypeDenoter;
 import Triangle.AbstractSyntaxTrees.IntegerExpression;
 import Triangle.AbstractSyntaxTrees.IntegerLiteral;
@@ -449,7 +450,7 @@ public class TreeVisitor implements Visitor {
     // </editor-fold>
 
     public Object visitRepeatCommand(RepeatForRangeCommand ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return(createTernary("RepeatForRange", ast.RVD, ast.e, ast.c)); //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -489,16 +490,21 @@ public class TreeVisitor implements Visitor {
 
     @Override
     public Object visitRepeatForRangeWhileCommand(RepeatForRangeWhileCommand ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return(createQuaternary("RepeatForRangeWhileCommand", ast.RVD, ast.E2, ast.C, ast.E3));
     }
 
     @Override
     public Object visitRepeatForRangeUntilCommand(RepeatForRangeUntilCommand ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return(createQuaternary("RepeatForRangeUntilCommand", ast.RVD, ast.E2, ast.C, ast.E3));
     }
 
     @Override
     public Object visitRepeatForInCommand(RepeatForInCommand ast, Object o) {
-        return(createTernary("RepeatForInCommand", ast.I, ast.E, ast.C));
+        return(createBinary("RepeatForInCommand", ast.IVD, ast.C));
+    }
+
+    @Override
+    public Object visitInVarDecl(InVarDecl ast, Object o) {
+        return(createBinary("InVarDecl", ast.I, ast.E));
     }
 }

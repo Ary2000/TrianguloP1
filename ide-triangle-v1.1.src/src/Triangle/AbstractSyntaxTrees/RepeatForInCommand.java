@@ -15,8 +15,7 @@ import org.w3c.dom.Element;
 public class RepeatForInCommand extends Command {
     public RepeatForInCommand(Identifier iAST, Expression eAST, Command cAST, SourcePosition thePosition) {
         super(thePosition);
-        I = iAST;
-        E = eAST;
+        IVD = new InVarDecl(iAST, eAST, thePosition);
         C = cAST;
     }
     
@@ -27,13 +26,11 @@ public class RepeatForInCommand extends Command {
     @Override
     public Element conseguirNodes(Document doc) {
         Element rootElement = doc.createElement("RepeatForInCommand");
-        rootElement.appendChild(I.conseguirNodes(doc));
-        rootElement.appendChild(E.conseguirNodes(doc));
+        rootElement.appendChild(IVD.conseguirNodes(doc));
         rootElement.appendChild(C.conseguirNodes(doc));
         return rootElement;
     }
     
-    public Identifier I;
-    public Expression E;
+    public InVarDecl IVD;
     public Command C;
 }

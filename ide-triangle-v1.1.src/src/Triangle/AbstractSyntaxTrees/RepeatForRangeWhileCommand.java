@@ -13,11 +13,9 @@ import org.w3c.dom.Element;
  * @author Ary
  */
 public class RepeatForRangeWhileCommand extends Command{
-    public RepeatForRangeWhileCommand(Identifier iAST, Expression e1AST, Expression e2AST, 
-                                      Expression e3AST, Command cAST, SourcePosition thePosition){
+    public RepeatForRangeWhileCommand(Identifier iAST, Expression e1AST, Expression e2AST, Expression e3AST, Command cAST, SourcePosition thePosition){
         super(thePosition);
-        I = iAST;
-        E1 = e1AST;
+        RVD = new RangeVarDecl(iAST, e1AST, thePosition);
         E2 = e2AST;
         E3 = e3AST;
         C = cAST;
@@ -30,15 +28,14 @@ public class RepeatForRangeWhileCommand extends Command{
     @Override
     public Element conseguirNodes(Document doc) {
         Element rootElement = doc.createElement("RepeatForRangeWhileCommand");
-        rootElement.appendChild(I.conseguirNodes(doc));
-        rootElement.appendChild(E1.conseguirNodes(doc));
+        rootElement.appendChild(RVD.conseguirNodes(doc));
         rootElement.appendChild(E2.conseguirNodes(doc));
         rootElement.appendChild(E3.conseguirNodes(doc));
         rootElement.appendChild(C.conseguirNodes(doc));
         return rootElement;
     }
     
-    public Identifier I;
-    public Expression E1, E2, E3;
+    public RangeVarDecl RVD;
+    public Expression E2, E3;
     public Command C;
 }
