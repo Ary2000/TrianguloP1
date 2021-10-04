@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class MultipleRecordAggregate extends RecordAggregate {
 
@@ -30,6 +32,15 @@ public class MultipleRecordAggregate extends RecordAggregate {
     return v.visitMultipleRecordAggregate(this, o);
   }
 
+  @Override
+    public Element conseguirNodes(Document doc) {
+        Element rootElement = doc.createElement("MultipleRecordAggregate");
+        rootElement.appendChild(I.conseguirNodes(doc));
+        rootElement.appendChild(E.conseguirNodes(doc));
+        rootElement.appendChild(RA.conseguirNodes(doc));
+        return rootElement;
+    }
+  
   public Identifier I;
   public Expression E;
   public RecordAggregate RA;

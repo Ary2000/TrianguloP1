@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class UnaryOperatorDeclaration extends Declaration {
 
@@ -29,6 +31,15 @@ public class UnaryOperatorDeclaration extends Declaration {
   public Object visit (Visitor v, Object o) {
     return v.visitUnaryOperatorDeclaration(this, o);
   }
+  
+  @Override
+    public Element conseguirNodes(Document doc) {
+        Element rootElement = doc.createElement("UnaryOperatorDeclaration");
+        rootElement.appendChild(O.conseguirNodes(doc));
+        rootElement.appendChild(ARG.conseguirNodes(doc));
+        rootElement.appendChild(RES.conseguirNodes(doc));
+        return rootElement;
+    }
 
   public Operator O;
   public TypeDenoter ARG, RES;

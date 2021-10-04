@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class FuncActualParameter extends ActualParameter {
 
@@ -27,5 +29,12 @@ public class FuncActualParameter extends ActualParameter {
     return v.visitFuncActualParameter(this, o);
   }
 
+  @Override
+    public Element conseguirNodes(Document doc) {
+        Element rootElement = doc.createElement("FuncActualParameter");
+        rootElement.appendChild(I.conseguirNodes(doc));
+        return rootElement;
+    }
+  
   public Identifier I;
 }

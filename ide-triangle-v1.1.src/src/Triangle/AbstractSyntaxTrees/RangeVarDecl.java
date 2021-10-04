@@ -6,6 +6,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class RangeVarDecl extends AST {
     public RangeVarDecl (Identifier iAST, Expression eAST, SourcePosition thePosition) {
@@ -16,6 +18,14 @@ public class RangeVarDecl extends AST {
     
     public Object visit(Visitor v, Object o) {
         return v.visitRangeVarDecl(this, o);
+    }
+    
+    @Override
+    public Element conseguirNodes(Document doc) {
+        Element rootElement = doc.createElement("RangeVarDecl");
+        rootElement.appendChild(I.conseguirNodes(doc));
+        rootElement.appendChild(E.conseguirNodes(doc));
+        return rootElement;
     }
     
     public Identifier I;

@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public abstract class Declaration extends AST {
 
@@ -22,6 +24,6 @@ public abstract class Declaration extends AST {
     super (thePosition);
     duplicated = false;
   }
-
+  
   public boolean duplicated;
 }

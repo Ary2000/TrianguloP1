@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class TypeDeclaration extends Declaration {
 
@@ -28,6 +30,14 @@ public class TypeDeclaration extends Declaration {
   public Object visit(Visitor v, Object o) {
     return v.visitTypeDeclaration(this, o);
   }
+  
+  @Override
+    public Element conseguirNodes(Document doc) {
+        Element rootElement = doc.createElement("TypeDeclaration");
+        rootElement.appendChild(I.conseguirNodes(doc));
+        rootElement.appendChild(T.conseguirNodes(doc));
+        return rootElement;
+    }
 
   public Identifier I;
   public TypeDenoter T;

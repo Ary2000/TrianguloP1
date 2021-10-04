@@ -6,6 +6,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 /**
  *
  * @author Ary
@@ -24,6 +26,17 @@ public class RepeatForRangeWhileCommand extends Command{
     public Object visit(Visitor v, Object o) {
     return v.visitRepeatForRangeWhileCommand(this, o);
   }
+    
+    @Override
+    public Element conseguirNodes(Document doc) {
+        Element rootElement = doc.createElement("RepeatForRangeWhileCommand");
+        rootElement.appendChild(I.conseguirNodes(doc));
+        rootElement.appendChild(E1.conseguirNodes(doc));
+        rootElement.appendChild(E2.conseguirNodes(doc));
+        rootElement.appendChild(E3.conseguirNodes(doc));
+        rootElement.appendChild(C.conseguirNodes(doc));
+        return rootElement;
+    }
     
     public Identifier I;
     public Expression E1, E2, E3;

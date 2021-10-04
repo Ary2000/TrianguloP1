@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class SingleFieldTypeDenoter extends FieldTypeDenoter {
 
@@ -37,6 +39,14 @@ public class SingleFieldTypeDenoter extends FieldTypeDenoter {
     } else
       return false;
   }
+  
+  @Override
+    public Element conseguirNodes(Document doc) {
+        Element rootElement = doc.createElement("SingleFieldTypeDenoter");
+        rootElement.appendChild(I.conseguirNodes(doc));
+        rootElement.appendChild(T.conseguirNodes(doc));
+        return rootElement;
+    }
 
   public Identifier I;
   public TypeDenoter T;

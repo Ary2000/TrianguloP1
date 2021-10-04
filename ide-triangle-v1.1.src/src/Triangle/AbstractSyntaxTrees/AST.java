@@ -41,13 +41,11 @@ public abstract class AST {
 
   public abstract Object visit(Visitor v, Object o);
   
-  /*
   public Element conseguirNodes(Document doc){
       String[] nombreClase = this.getClass().getName().split("\\.");
       return doc.createElement(nombreClase[nombreClase.length - 1]);
   };
-*/
-  public abstract Element conseguirNodes(Document doc);
+  //public abstract Element conseguirNodes(Document doc);
   
   public SourcePosition	position;
   public RuntimeEntity  entity;

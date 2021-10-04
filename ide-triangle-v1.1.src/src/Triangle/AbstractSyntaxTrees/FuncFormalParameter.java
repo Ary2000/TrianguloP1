@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class FuncFormalParameter extends FormalParameter {
 
@@ -38,6 +40,15 @@ public class FuncFormalParameter extends FormalParameter {
   	  return false;
   }
 
+  @Override
+    public Element conseguirNodes(Document doc) {
+        Element rootElement = doc.createElement("FuncFormalParameter");
+        rootElement.appendChild(I.conseguirNodes(doc));
+        rootElement.appendChild(FPS.conseguirNodes(doc));
+        rootElement.appendChild(T.conseguirNodes(doc));
+        return rootElement;
+    }
+  
   public Identifier I;
   public FormalParameterSequence FPS;
   public TypeDenoter T;

@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class SingleRecordAggregate extends RecordAggregate {
 
@@ -29,6 +31,14 @@ public class SingleRecordAggregate extends RecordAggregate {
     return v.visitSingleRecordAggregate(this, o);
   }
 
+  @Override
+    public Element conseguirNodes(Document doc) {
+        Element rootElement = doc.createElement("SingleRecordAggregate");
+        rootElement.appendChild(I.conseguirNodes(doc));
+        rootElement.appendChild(E.conseguirNodes(doc));
+        return rootElement;
+    }
+  
   public Identifier I;
   public Expression E;
 }

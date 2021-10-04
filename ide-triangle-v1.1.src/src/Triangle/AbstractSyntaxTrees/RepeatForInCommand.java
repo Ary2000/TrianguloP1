@@ -6,6 +6,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 /**
  *
  * @author Ary
@@ -20,6 +22,15 @@ public class RepeatForInCommand extends Command {
     
     public Object visit(Visitor v, Object o) {
         return v.visitRepeatForInCommand(this, o);
+    }
+    
+    @Override
+    public Element conseguirNodes(Document doc) {
+        Element rootElement = doc.createElement("RepeatForInCommand");
+        rootElement.appendChild(I.conseguirNodes(doc));
+        rootElement.appendChild(E.conseguirNodes(doc));
+        rootElement.appendChild(C.conseguirNodes(doc));
+        return rootElement;
     }
     
     public Identifier I;

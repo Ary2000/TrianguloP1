@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class IntTypeDenoter extends TypeDenoter {
 
@@ -25,6 +27,11 @@ public class IntTypeDenoter extends TypeDenoter {
   public Object visit (Visitor v, Object o) {
     return v.visitIntTypeDenoter(this, o);
   }
+  
+  @Override
+    public Element conseguirNodes(Document doc) {
+        return doc.createElement("FuncDeclaration");
+    }
 
   public boolean equals (Object obj) {
     if (obj != null && obj instanceof ErrorTypeDenoter)

@@ -6,6 +6,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 /**
  *
@@ -21,6 +23,14 @@ public class RepeatDoWhileCommand extends Command{
     public Object visit(Visitor v, Object o) {
     return v.visitRepeatDoWhileCommand(this, o);
   }
+    
+    @Override
+    public Element conseguirNodes(Document doc) {
+        Element rootElement = doc.createElement("RepeatDoWhileCommand");
+        rootElement.appendChild(e.conseguirNodes(doc));
+        rootElement.appendChild(c.conseguirNodes(doc));
+        return rootElement;
+    }
     
     public Expression e;
     public Command c;
