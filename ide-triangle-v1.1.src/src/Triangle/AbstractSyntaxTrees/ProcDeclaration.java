@@ -16,7 +16,7 @@ package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
 
-public class ProcDeclaration extends Declaration {
+public class ProcDeclaration extends ProcFunc {
 
   public ProcDeclaration (Identifier iAST, FormalParameterSequence fpsAST,
   		   Command cAST, SourcePosition thePosition) {
