@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class EmptyExpression extends Expression {
 
@@ -25,4 +27,9 @@ public class EmptyExpression extends Expression {
   public Object visit(Visitor v, Object o) {
     return v.visitEmptyExpression(this, o);
   }
+  
+  @Override
+    public Element conseguirNodes(Document doc) {
+        return doc.createElement("ArrayTypeDenoter");
+    }
 }

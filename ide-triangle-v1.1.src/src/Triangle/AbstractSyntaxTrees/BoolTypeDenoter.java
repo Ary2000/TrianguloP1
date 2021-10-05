@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class BoolTypeDenoter extends TypeDenoter {
 
@@ -32,4 +34,10 @@ public class BoolTypeDenoter extends TypeDenoter {
     else
       return ((obj != null) && (obj instanceof BoolTypeDenoter));
   }
+  
+  @Override
+    public Element conseguirNodes(Document doc) {
+        return doc.createElement("BoolTypeDenoter");
+    }
+  
 }

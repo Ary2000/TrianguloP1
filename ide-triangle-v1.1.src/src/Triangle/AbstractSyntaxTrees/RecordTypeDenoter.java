@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class RecordTypeDenoter extends TypeDenoter {
 
@@ -36,5 +38,12 @@ public class RecordTypeDenoter extends TypeDenoter {
       return false;
   }
 
+  @Override
+    public Element conseguirNodes(Document doc) {
+        Element rootElement = doc.createElement("RecordTypeDenoter");
+        rootElement.appendChild(FT.conseguirNodes(doc));
+        return rootElement;
+    }
+  
   public FieldTypeDenoter FT;
 }

@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class ArrayTypeDenoter extends TypeDenoter {
 
@@ -38,7 +40,17 @@ public class ArrayTypeDenoter extends TypeDenoter {
     else
       return false;
   }
-
+  
+  @Override
+    public Element conseguirNodes(Document doc) {
+        Element rootElement = doc.createElement("ArrayTypeDenoter");
+        rootElement.appendChild(IL.conseguirNodes(doc));
+        rootElement.appendChild(T.conseguirNodes(doc));
+        return rootElement;
+    }
+  
   public IntegerLiteral IL;
   public TypeDenoter T;
+
+    
 }

@@ -16,6 +16,17 @@ package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
 
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import org.w3c.dom.Attr;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import java.io.File;
+
 public class IntegerExpression extends Expression {
 
   public IntegerExpression (IntegerLiteral ilAST, SourcePosition thePosition) {
@@ -25,6 +36,12 @@ public class IntegerExpression extends Expression {
 
   public Object visit(Visitor v, Object o) {
     return v.visitIntegerExpression(this, o);
+  }
+  
+  public Element conseguirNodes(Document doc){
+      Element rootElement = doc.createElement("IntegerExpression");
+      rootElement.appendChild(IL.conseguirNodes(doc));
+      return rootElement;
   }
 
   public IntegerLiteral IL;

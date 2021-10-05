@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><Program><RepeatDoWhileCommand><IntegerLiteral><IntegerExpression><IntegerLiteral value="3"/></IntegerExpression><IntegerExpression><IntegerLiteral value="3"/></IntegerExpression><Operator value="="/></IntegerLiteral><SequencialCommand><ArrayTypeDenoter/><ArrayTypeDenoter/></SequencialCommand></RepeatDoWhileCommand></Program>

@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class MultipleFormalParameterSequence extends FormalParameterSequence {
 
@@ -38,6 +40,14 @@ public class MultipleFormalParameterSequence extends FormalParameterSequence {
       return false;
   }
 
+  @Override
+    public Element conseguirNodes(Document doc) {
+        Element rootElement = doc.createElement("MultipleFormalParameterSequence");
+        rootElement.appendChild(FP.conseguirNodes(doc));
+        rootElement.appendChild(FPS.conseguirNodes(doc));
+        return rootElement;
+    }
+  
   public FormalParameter FP;
   public FormalParameterSequence FPS;
 }

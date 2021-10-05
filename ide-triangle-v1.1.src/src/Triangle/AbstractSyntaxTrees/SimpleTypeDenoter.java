@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class SimpleTypeDenoter extends TypeDenoter {
 
@@ -30,6 +32,13 @@ public class SimpleTypeDenoter extends TypeDenoter {
   public boolean equals (Object obj) {
     return false; // should not happen
   }
+  
+  @Override
+    public Element conseguirNodes(Document doc) {
+        Element rootElement = doc.createElement("SimpleTypeDenoter");
+        rootElement.appendChild(I.conseguirNodes(doc));
+        return rootElement;
+    }
 
   public Identifier I;
 }

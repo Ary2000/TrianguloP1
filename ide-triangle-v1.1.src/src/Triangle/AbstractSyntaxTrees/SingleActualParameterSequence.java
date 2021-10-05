@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class SingleActualParameterSequence extends ActualParameterSequence {
 
@@ -28,5 +30,12 @@ public class SingleActualParameterSequence extends ActualParameterSequence {
     return v.visitSingleActualParameterSequence(this, o);
   }
 
+  @Override
+    public Element conseguirNodes(Document doc) {
+        Element rootElement = doc.createElement("SingleActualParameterSequence");
+        rootElement.appendChild(AP.conseguirNodes(doc));
+        return rootElement;
+    }
+  
   public ActualParameter AP;
 }

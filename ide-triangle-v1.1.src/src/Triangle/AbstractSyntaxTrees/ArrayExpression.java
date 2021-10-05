@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class ArrayExpression extends Expression {
 
@@ -27,6 +29,13 @@ public class ArrayExpression extends Expression {
   public Object visit (Visitor v, Object o) {
     return v.visitArrayExpression(this, o);
   }
-
+  
+  @Override
+  public Element conseguirNodes(Document doc) {
+      Element rootElement = doc.createElement("ArrayExpression");
+      rootElement.appendChild(AA.conseguirNodes(doc));
+      return rootElement;
+  }
+  
   public ArrayAggregate AA;
 }

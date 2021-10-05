@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class DotVname extends Vname {
 
@@ -28,6 +30,14 @@ public class DotVname extends Vname {
     return v.visitDotVname(this, o);
   }
 
+  @Override
+    public Element conseguirNodes(Document doc) {
+        Element rootElement = doc.createElement("DotVname");
+        rootElement.appendChild(I.conseguirNodes(doc));
+        rootElement.appendChild(V.conseguirNodes(doc));
+        return rootElement;
+    }
+  
   public Identifier I;
   public Vname V;
 }
