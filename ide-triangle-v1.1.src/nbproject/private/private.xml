@@ -4,17 +4,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Ary/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/AbstractSyntaxTrees/RepeatDoUntilCommand.java</file>
-            <file>file:/C:/Users/Ary/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/AbstractSyntaxTrees/RepeatUntilDoCommand.java</file>
-            <file>file:/C:/Users/Ary/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/AbstractSyntaxTrees/RepeatWhileDoCommand.java</file>
-            <file>file:/C:/Users/Ary/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/AbstractSyntaxTrees/RepeatDoWhileCommand.java</file>
-            <file>file:/C:/Users/Ary/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/AbstractSyntaxTrees/RepeatForInCommand.java</file>
-            <file>file:/C:/Users/Ary/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/TreeDrawer/LayoutVisitor.java</file>
-            <file>file:/C:/Users/Ary/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/AbstractSyntaxTrees/RepeatForRangeUntilCommand.java</file>
-            <file>file:/C:/Users/Ary/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/SyntacticAnalyzer/Parser.java</file>
-            <file>file:/C:/Users/Ary/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/AbstractSyntaxTrees/RepeatForRangeCommand.java</file>
-            <file>file:/C:/Users/Ary/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/AbstractSyntaxTrees/RepeatForRangeWhileCommand.java</file>
-            <file>file:/C:/Users/Ary/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/AbstractSyntaxTrees/Visitor.java</file>
+            <file>file:/C:/Users/tian_/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/IDEReporter.java</file>
+            <file>file:/C:/Users/tian_/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/Compiler.java</file>
+            <file>file:/C:/Users/tian_/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/StdEnvironment.java</file>
+            <file>file:/C:/Users/tian_/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/ContextualAnalyzer/Checker.java</file>
+            <file>file:/C:/Users/tian_/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/IDECompiler.java</file>
+            <file>file:/C:/Users/tian_/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/SyntacticAnalyzer/Parser.java</file>
         </group>
     </open-files>
 </project-private>

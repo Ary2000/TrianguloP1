@@ -116,4 +116,14 @@ public interface Visitor {
   // Programs
   public abstract Object visitProgram(Program ast, Object o);
 
+    public Object visitWhenCaseLiteral(WhenCaseLiteral aThis, Object o);
+
+    public Object visitWhenCaseRange(WhenCaseRange aThis, Object o);
+
+    public Object visitCaseLiteralInt(CaseLiteralInt aThis, Object o);
+
+    public Object visitCaseLiteralChar(CaseLiteralChar aThis, Object o);
+
+    public Object visitElseCaseCom(ElseCaseCom aThis, Object o);
+
 }
