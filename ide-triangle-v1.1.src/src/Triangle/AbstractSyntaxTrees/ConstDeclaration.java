@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class ConstDeclaration extends Declaration {
 
@@ -29,6 +31,14 @@ public class ConstDeclaration extends Declaration {
     return v.visitConstDeclaration(this, o);
   }
 
+  @Override
+    public Element conseguirNodes(Document doc) {
+        Element rootElement = doc.createElement("ConstDeclaration");
+        rootElement.appendChild(I.conseguirNodes(doc));
+        rootElement.appendChild(E.conseguirNodes(doc));
+        return rootElement;
+    }
+  
   public Identifier I;
   public Expression E;
 }

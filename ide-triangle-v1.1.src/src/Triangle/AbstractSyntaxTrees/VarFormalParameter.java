@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class VarFormalParameter extends FormalParameter {
 
@@ -29,6 +31,14 @@ public class VarFormalParameter extends FormalParameter {
     return v.visitVarFormalParameter(this, o);
   }
 
+  @Override
+    public Element conseguirNodes(Document doc) {
+        Element rootElement = doc.createElement("VarFormalParameter");
+        rootElement.appendChild(I.conseguirNodes(doc));
+        rootElement.appendChild(T.conseguirNodes(doc));
+        return rootElement;
+    }
+  
   public Identifier I;
   public TypeDenoter T;
 

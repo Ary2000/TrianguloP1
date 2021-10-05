@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class IfExpression extends Expression {
 
@@ -29,6 +31,15 @@ public class IfExpression extends Expression {
   public Object visit(Visitor v, Object o) {
     return v.visitIfExpression(this, o);
   }
+  
+  @Override
+    public Element conseguirNodes(Document doc) {
+        Element rootElement = doc.createElement("IfExpression");
+        rootElement.appendChild(E1.conseguirNodes(doc));
+        rootElement.appendChild(E2.conseguirNodes(doc));
+        rootElement.appendChild(E3.conseguirNodes(doc));
+        return rootElement;
+    }
 
   public Expression E1, E2, E3;
 }

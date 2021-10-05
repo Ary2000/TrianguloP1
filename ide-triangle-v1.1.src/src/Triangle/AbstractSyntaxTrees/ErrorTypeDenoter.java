@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class ErrorTypeDenoter extends TypeDenoter {
 
@@ -26,6 +28,11 @@ public class ErrorTypeDenoter extends TypeDenoter {
     return v.visitErrorTypeDenoter(this, o);
   }
 
+  @Override
+    public Element conseguirNodes(Document doc) {
+        return doc.createElement("ArrayTypeDenoter");
+    }
+  
   public boolean equals (Object obj) {
     return true;
   }

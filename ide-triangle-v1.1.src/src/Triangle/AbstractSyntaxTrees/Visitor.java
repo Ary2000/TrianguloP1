@@ -15,12 +15,23 @@
 package Triangle.AbstractSyntaxTrees;
 
 public interface Visitor {
+   //
+  public abstract Object visitRangeVarDecl(RangeVarDecl ast, Object o); 
 
   // Commands
   public abstract Object visitAssignCommand(AssignCommand ast, Object o);
   public abstract Object visitCallCommand(CallCommand ast, Object o);
   public abstract Object visitEmptyCommand(EmptyCommand ast, Object o);
   public abstract Object visitIfCommand(IfCommand ast, Object o);
+  public abstract Object visitRepeatExpressionCommand(RepeatWhileDoCommand ast, Object o);
+  public abstract Object visitRepeatUntilDoCommand(RepeatUntilDoCommand ast, Object o);
+  public abstract Object visitRepeatDoWhileCommand(RepeatDoWhileCommand ast, Object o);
+  public abstract Object visitRepeatDoUntilCommand(RepeatDoUntilCommand ast, Object o);
+  public abstract Object visitRepeatForRangeCommand(RepeatForRangeCommand ast, Object o);
+  public abstract Object visitRepeatForRangeWhileCommand(RepeatForRangeWhileCommand ast, Object o);
+  public abstract Object visitRepeatForRangeUntilCommand(RepeatForRangeUntilCommand ast, Object o);
+  public abstract Object visitRepeatForInCommand(RepeatForInCommand ast, Object o);
+  public abstract Object visitRepeatInCommand(RepeatInCommand ast, Object o);
   public abstract Object visitLetCommand(LetCommand ast, Object o);
   public abstract Object visitSequentialCommand(SequentialCommand ast, Object o);
   public abstract Object visitWhileCommand(WhileCommand ast, Object o);
@@ -35,6 +46,7 @@ public interface Visitor {
   public abstract Object visitIfExpression(IfExpression ast, Object o);
   public abstract Object visitIntegerExpression(IntegerExpression ast, Object o);
   public abstract Object visitLetExpression(LetExpression ast, Object o);
+  
   public abstract Object visitRecordExpression(RecordExpression ast, Object o);
   public abstract Object visitUnaryExpression(UnaryExpression ast, Object o);
   public abstract Object visitVnameExpression(VnameExpression ast, Object o);
@@ -45,6 +57,12 @@ public interface Visitor {
   public abstract Object visitFuncDeclaration(FuncDeclaration ast, Object o);
   public abstract Object visitProcDeclaration(ProcDeclaration ast, Object o);
   public abstract Object visitSequentialDeclaration(SequentialDeclaration ast, Object o);
+  //agregacion jacob
+  public abstract Object visitSequentialProcFunc(SequentialProcFunc ast, Object o);
+  public abstract Object visitRecursiveDeclaration(RecursiveDeclaration ast, Object o);
+  public abstract Object visitLocalDeclaration(LocalDeclaration ast, Object o);
+  public abstract Object visitVarDeclaration2(VarDeclaration2 ast, Object o);
+  //fin de agregacion
   public abstract Object visitTypeDeclaration(TypeDeclaration ast, Object o);
   public abstract Object visitUnaryOperatorDeclaration(UnaryOperatorDeclaration ast, Object o);
   public abstract Object visitVarDeclaration(VarDeclaration ast, Object o);
@@ -103,5 +121,19 @@ public interface Visitor {
 
   // Programs
   public abstract Object visitProgram(Program ast, Object o);
+
+
+    public Object visitWhenCaseLiteral(WhenCaseLiteral aThis, Object o);
+
+    public Object visitWhenCaseRange(WhenCaseRange aThis, Object o);
+
+    public Object visitCaseLiteralInt(CaseLiteralInt aThis, Object o);
+
+    public Object visitCaseLiteralChar(CaseLiteralChar aThis, Object o);
+
+    public Object visitElseCaseCom(ElseCaseCom aThis, Object o);
+
+    public abstract Object visitInVarDecl(InVarDecl ast, Object o);
+
 
 }

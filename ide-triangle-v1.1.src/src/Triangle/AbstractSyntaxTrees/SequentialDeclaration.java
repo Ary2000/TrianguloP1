@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class SequentialDeclaration extends Declaration {
 
@@ -25,9 +27,18 @@ public class SequentialDeclaration extends Declaration {
     D2 = d2AST;
   }
 
+  @Override
   public Object visit(Visitor v, Object o) {
     return v.visitSequentialDeclaration(this, o);
   }
+  
+  @Override
+    public Element conseguirNodes(Document doc) {
+        Element rootElement = doc.createElement("SequencialDeclaration");
+        rootElement.appendChild(D1.conseguirNodes(doc));
+        rootElement.appendChild(D2.conseguirNodes(doc));
+        return rootElement;
+    }
 
   public Declaration D1, D2;
 }

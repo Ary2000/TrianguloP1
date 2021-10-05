@@ -16,6 +16,17 @@ package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
 
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import org.w3c.dom.Attr;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import java.io.File;
+
 public class IntegerLiteral extends Terminal {
 
   public IntegerLiteral (String theSpelling, SourcePosition thePosition) {
@@ -24,6 +35,15 @@ public class IntegerLiteral extends Terminal {
 
   public Object visit(Visitor v, Object o) {
     return v.visitIntegerLiteral(this, o);
+  }
+  
+  public Element conseguirNodes(Document doc) {
+      Element rootElement = doc.createElement("IntegerLiteral");
+      //Attr attr = doc.createAttribute("value");
+      //attr.setValue(this.spelling);
+      //rootElement.setAttributeNode(attr);
+      rootElement.setAttribute("value", this.spelling);
+      return rootElement;
   }
 
 }

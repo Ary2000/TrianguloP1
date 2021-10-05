@@ -15,8 +15,10 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
-public class FuncDeclaration extends Declaration {
+public class FuncDeclaration extends ProcFunc {
 
   public FuncDeclaration (Identifier iAST, FormalParameterSequence fpsAST,
   		   TypeDenoter tAST, Expression eAST,
@@ -31,6 +33,16 @@ public class FuncDeclaration extends Declaration {
   public Object visit (Visitor v, Object o) {
     return v.visitFuncDeclaration(this, o);
   }
+  
+  @Override
+    public Element conseguirNodes(Document doc) {
+        Element rootElement = doc.createElement("FuncDeclaration");
+        rootElement.appendChild(I.conseguirNodes(doc));
+        rootElement.appendChild(FPS.conseguirNodes(doc));
+        rootElement.appendChild(T.conseguirNodes(doc));
+        rootElement.appendChild(E.conseguirNodes(doc));
+        return rootElement;
+    }
 
   public Identifier I;
   public FormalParameterSequence FPS;

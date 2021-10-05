@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class MultipleArrayAggregate extends ArrayAggregate {
 
@@ -28,6 +30,14 @@ public class MultipleArrayAggregate extends ArrayAggregate {
   public Object visit (Visitor v, Object o) {
     return v.visitMultipleArrayAggregate(this, o);
   }
+  
+  @Override
+    public Element conseguirNodes(Document doc) {
+        Element rootElement = doc.createElement("FuncDeclaration");
+        rootElement.appendChild(E.conseguirNodes(doc));
+        rootElement.appendChild(AA.conseguirNodes(doc));
+        return rootElement;
+    }
 
   public Expression E;
   public ArrayAggregate AA;

@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class EmptyActualParameterSequence extends ActualParameterSequence {
 
@@ -25,4 +27,10 @@ public class EmptyActualParameterSequence extends ActualParameterSequence {
   public Object visit(Visitor v, Object o) {
     return v.visitEmptyActualParameterSequence(this, o);
   }
+  
+  @Override
+    public Element conseguirNodes(Document doc) {
+        return doc.createElement("ArrayTypeDenoter");
+    }
+  
 }

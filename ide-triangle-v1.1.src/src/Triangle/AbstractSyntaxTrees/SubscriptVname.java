@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class SubscriptVname extends Vname {
 
@@ -28,6 +30,14 @@ public class SubscriptVname extends Vname {
     return v.visitSubscriptVname(this, o);
   }
 
+  @Override
+    public Element conseguirNodes(Document doc) {
+        Element rootElement = doc.createElement("SubcriptVname");
+        rootElement.appendChild(E.conseguirNodes(doc));
+        rootElement.appendChild(V.conseguirNodes(doc));
+        return rootElement;
+    }
+  
   public Expression E;
   public Vname V;
 }

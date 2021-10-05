@@ -4,10 +4,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Ary/OneDrive/Desktop/TEC/Semestre%202%202021/Compiladores%20e%20Interpretadores/Triangle/ide-triangle-v1.1.src/src/GUI/Main.java</file>
-            <file>file:/C:/Users/Ary/OneDrive/Desktop/TEC/Semestre%202%202021/Compiladores%20e%20Interpretadores/Triangle/ide-triangle-v1.1.src/src/Triangle/SyntacticAnalyzer/Parser.java</file>
-            <file>file:/C:/Users/Ary/OneDrive/Desktop/TEC/Semestre%202%202021/Compiladores%20e%20Interpretadores/Triangle/ide-triangle-v1.1.src/src/Triangle/IDECompiler.java</file>
-            <file>file:/C:/Users/Ary/OneDrive/Desktop/TEC/Semestre%202%202021/Compiladores%20e%20Interpretadores/Triangle/ide-triangle-v1.1.src/src/Triangle/SyntacticAnalyzer/Token.java</file>
+            <file>file:/C:/Users/Ary/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/AbstractSyntaxTrees/AST.java</file>
+            <file>file:/C:/Users/Ary/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/AbstractSyntaxTrees/RepeatForInCommand.java</file>
+            <file>file:/C:/Users/Ary/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/AbstractSyntaxTrees/RepeatForRangeUntilCommand.java</file>
+            <file>file:/C:/Users/Ary/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/IDECompiler.java</file>
+            <file>file:/C:/Users/Ary/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/AbstractSyntaxTrees/InVarDecl.java</file>
+            <file>file:/C:/Users/Ary/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Core/Visitors/TreeVisitor.java</file>
+            <file>file:/C:/Users/Ary/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/SyntacticAnalyzer/Parser.java</file>
+            <file>file:/C:/Users/Ary/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/AbstractSyntaxTrees/RepeatForRangeCommand.java</file>
+            <file>file:/C:/Users/Ary/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/AbstractSyntaxTrees/RepeatForRangeWhileCommand.java</file>
+            <file>file:/C:/Users/Ary/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/AbstractSyntaxTrees/RepeatInCommand.java</file>
+            <file>file:/C:/Users/Ary/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/AbstractSyntaxTrees/Visitor.java</file>
+            <file>file:/C:/Users/Ary/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/AbstractSyntaxTrees/RangeVarDecl.java</file>
         </group>
     </open-files>
 </project-private>

@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class ProcFormalParameter extends FormalParameter {
 
@@ -28,6 +30,14 @@ public class ProcFormalParameter extends FormalParameter {
   public Object visit(Visitor v, Object o) {
     return v.visitProcFormalParameter(this, o);
   }
+  
+  @Override
+    public Element conseguirNodes(Document doc) {
+        Element rootElement = doc.createElement("ProcFormalParameter");
+        rootElement.appendChild(I.conseguirNodes(doc));
+        rootElement.appendChild(FPS.conseguirNodes(doc));
+        return rootElement;
+    }
 
   public Identifier I;
   public FormalParameterSequence FPS;

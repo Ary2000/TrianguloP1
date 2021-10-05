@@ -17,6 +17,17 @@ package Triangle.AbstractSyntaxTrees;
 import Triangle.CodeGenerator.RuntimeEntity;
 import Triangle.SyntacticAnalyzer.SourcePosition;
 
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import org.w3c.dom.Attr;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import java.io.File;
+
 public abstract class AST {
 
   public AST (SourcePosition thePosition) {
@@ -29,7 +40,13 @@ public abstract class AST {
   }
 
   public abstract Object visit(Visitor v, Object o);
-
+  
+  public Element conseguirNodes(Document doc){
+      String[] nombreClase = this.getClass().getName().split("\\.");
+      return doc.createElement(nombreClase[nombreClase.length - 1]);
+  };
+  //public abstract Element conseguirNodes(Document doc);
+  
   public SourcePosition	position;
   public RuntimeEntity  entity;
 }

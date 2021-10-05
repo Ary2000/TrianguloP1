@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class VarActualParameter extends ActualParameter {
 
@@ -26,6 +28,13 @@ public class VarActualParameter extends ActualParameter {
   public Object visit(Visitor v, Object o) {
     return v.visitVarActualParameter(this, o);
   }
+  
+  @Override
+    public Element conseguirNodes(Document doc) {
+        Element rootElement = doc.createElement("VarActualParameter");
+        rootElement.appendChild(V.conseguirNodes(doc));
+        return rootElement;
+    }
 
   public Vname V;
 }

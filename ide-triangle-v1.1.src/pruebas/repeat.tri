@@ -1,0 +1,5 @@
+let
+	var i: Integer
+in
+	repeat for i := range 1 .. 5 do putint(i) end
+end
