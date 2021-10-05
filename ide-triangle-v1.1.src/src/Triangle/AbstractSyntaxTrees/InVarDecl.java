@@ -9,15 +9,15 @@ import Triangle.SyntacticAnalyzer.SourcePosition;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-public class RangeVarDecl extends AST {
-    public RangeVarDecl (Identifier iAST, Expression eAST, SourcePosition thePosition) {
+public class InVarDecl extends AST{
+    public InVarDecl(Identifier iAST, Expression eAST, SourcePosition thePosition){
         super(thePosition);
         I = iAST;
         E = eAST;
     }
     
     public Object visit(Visitor v, Object o) {
-        return v.visitRangeVarDecl(this, o);
+        return v.visitInVarDecl(this, o);
     }
     
     @Override

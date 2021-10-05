@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class SingleFormalParameterSequence extends FormalParameterSequence {
 
@@ -36,6 +38,13 @@ public class SingleFormalParameterSequence extends FormalParameterSequence {
     } else
       return false;
   }
+  
+  @Override
+    public Element conseguirNodes(Document doc) {
+        Element rootElement = doc.createElement("SingleFormalParameterSequence");
+        rootElement.appendChild(FP.conseguirNodes(doc));
+        return rootElement;
+    }
 
   public FormalParameter FP;
 }

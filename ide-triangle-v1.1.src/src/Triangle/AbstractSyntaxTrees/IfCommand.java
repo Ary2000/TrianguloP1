@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class IfCommand extends Command {
 
@@ -30,6 +32,15 @@ public class IfCommand extends Command {
     return v.visitIfCommand(this, o);
   }
 
+  @Override
+    public Element conseguirNodes(Document doc) {
+        Element rootElement = doc.createElement("IfCommand");
+        rootElement.appendChild(E.conseguirNodes(doc));
+        rootElement.appendChild(C1.conseguirNodes(doc));
+        rootElement.appendChild(C2.conseguirNodes(doc));
+        return rootElement;
+    }
+  
   public Expression E;
   public Command C1, C2;
 }

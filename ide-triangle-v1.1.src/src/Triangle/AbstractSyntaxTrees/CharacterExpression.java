@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class CharacterExpression extends Expression {
 
@@ -27,5 +29,12 @@ public class CharacterExpression extends Expression {
     return v.visitCharacterExpression(this, o);
   }
 
+  @Override
+    public Element conseguirNodes(Document doc) {
+        Element rootElement = doc.createElement("CharacterExpression");
+        rootElement.appendChild(CL.conseguirNodes(doc));
+        return rootElement;
+    }
+  
   public CharacterLiteral CL;
 }

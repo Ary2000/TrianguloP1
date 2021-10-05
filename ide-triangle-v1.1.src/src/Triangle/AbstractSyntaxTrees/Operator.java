@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class Operator extends Terminal {
 
@@ -27,5 +29,13 @@ public class Operator extends Terminal {
     return v.visitOperator(this, o);
   }
 
+  @Override
+    public Element conseguirNodes(Document doc) {
+        Element rootElement = doc.createElement("Operator");
+        //rootElement.appendChild(decl.conseguirNodes(doc));
+        rootElement.setAttribute("value", spelling);
+        return rootElement;
+    }
+  
   public Declaration decl;
 }

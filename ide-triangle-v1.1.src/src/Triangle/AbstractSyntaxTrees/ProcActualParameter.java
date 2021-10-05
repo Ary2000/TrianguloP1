@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class ProcActualParameter extends ActualParameter {
 
@@ -27,5 +29,12 @@ public class ProcActualParameter extends ActualParameter {
     return v.visitProcActualParameter(this, o);
   }
 
+  @Override
+    public Element conseguirNodes(Document doc) {
+        Element rootElement = doc.createElement("ProcActualPArameter");
+        rootElement.appendChild(I.conseguirNodes(doc));
+        return rootElement;
+    }
+  
   public Identifier I;
 }

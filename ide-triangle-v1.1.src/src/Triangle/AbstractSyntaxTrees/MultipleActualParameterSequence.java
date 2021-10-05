@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class MultipleActualParameterSequence extends ActualParameterSequence {
 
@@ -28,6 +30,14 @@ public class MultipleActualParameterSequence extends ActualParameterSequence {
   public Object visit(Visitor v, Object o) {
     return v.visitMultipleActualParameterSequence(this, o);
   }
+  
+  @Override
+    public Element conseguirNodes(Document doc) {
+        Element rootElement = doc.createElement("MultipleActualParameterSequence");
+        rootElement.appendChild(AP.conseguirNodes(doc));
+        rootElement.appendChild(APS.conseguirNodes(doc));
+        return rootElement;
+    }
 
   public ActualParameter AP;
   public ActualParameterSequence APS;

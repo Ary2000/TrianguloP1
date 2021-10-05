@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class VnameExpression extends Expression {
 
@@ -27,5 +29,12 @@ public class VnameExpression extends Expression {
     return v.visitVnameExpression(this, o);
   }
 
+  @Override
+    public Element conseguirNodes(Document doc) {
+        Element rootElement = doc.createElement("VnameExpression");
+        rootElement.appendChild(V.conseguirNodes(doc));
+        return rootElement;
+    }
+  
   public Vname V;
 }

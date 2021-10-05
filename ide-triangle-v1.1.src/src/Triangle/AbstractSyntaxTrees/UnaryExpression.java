@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class UnaryExpression extends Expression {
 
@@ -28,6 +30,14 @@ public class UnaryExpression extends Expression {
   public Object visit(Visitor v, Object o) {
     return v.visitUnaryExpression(this, o);
   }
+  
+  @Override
+    public Element conseguirNodes(Document doc) {
+        Element rootElement = doc.createElement("UnaryExpression");
+        rootElement.appendChild(E.conseguirNodes(doc));
+        rootElement.appendChild(O.conseguirNodes(doc));
+        return rootElement;
+    }
 
   public Expression E;
   public Operator O;

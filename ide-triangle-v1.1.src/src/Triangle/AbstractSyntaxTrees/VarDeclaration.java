@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class VarDeclaration extends Declaration {
 
@@ -29,6 +31,14 @@ public class VarDeclaration extends Declaration {
     return v.visitVarDeclaration(this, o);
   }
 
+  @Override
+    public Element conseguirNodes(Document doc) {
+        Element rootElement = doc.createElement("VarDeclaration");
+        rootElement.appendChild(I.conseguirNodes(doc));
+        rootElement.appendChild(T.conseguirNodes(doc));
+        return rootElement;
+    }
+  
   public Identifier I;
   public TypeDenoter T;
 }

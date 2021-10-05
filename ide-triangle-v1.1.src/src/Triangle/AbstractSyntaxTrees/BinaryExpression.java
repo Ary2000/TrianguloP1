@@ -16,6 +16,17 @@ package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
 
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import org.w3c.dom.Attr;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import java.io.File;
+
 public class BinaryExpression extends Expression {
 
   public BinaryExpression (Expression e1AST, Operator oAST, Expression e2AST,
@@ -30,6 +41,14 @@ public class BinaryExpression extends Expression {
     return v.visitBinaryExpression(this, o);
   }
 
+  public Element conseguirNodes(Document doc) {
+      Element rootElement = doc.createElement("IntegerLiteral");
+      rootElement.appendChild(E1.conseguirNodes(doc));
+      rootElement.appendChild(E2.conseguirNodes(doc));
+      rootElement.appendChild(O.conseguirNodes(doc));
+      return rootElement;
+  }
+  
   public Expression E1, E2;
   public Operator O;
 }

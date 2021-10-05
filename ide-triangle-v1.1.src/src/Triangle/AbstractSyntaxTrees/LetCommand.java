@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class LetCommand extends Command {
 
@@ -28,6 +30,14 @@ public class LetCommand extends Command {
     return v.visitLetCommand(this, o);
   }
 
+  @Override
+    public Element conseguirNodes(Document doc) {
+        Element rootElement = doc.createElement("LetCommand");
+        rootElement.appendChild(D.conseguirNodes(doc));
+        rootElement.appendChild(C.conseguirNodes(doc));
+        return rootElement;
+    }
+  
   public Declaration D;
   public Command C;
 }

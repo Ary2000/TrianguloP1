@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class CallExpression extends Expression {
 
@@ -29,6 +31,14 @@ public class CallExpression extends Expression {
     return v.visitCallExpression(this, o);
   }
 
+  @Override
+    public Element conseguirNodes(Document doc) {
+        Element rootElement = doc.createElement("CallExpression");
+        rootElement.appendChild(I.conseguirNodes(doc));
+        rootElement.appendChild(APS.conseguirNodes(doc));
+        return rootElement;
+    }
+  
   public Identifier I;
   public ActualParameterSequence APS;
 }

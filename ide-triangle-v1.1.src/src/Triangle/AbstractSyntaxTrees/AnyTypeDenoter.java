@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class AnyTypeDenoter extends TypeDenoter {
 
@@ -29,4 +31,9 @@ public class AnyTypeDenoter extends TypeDenoter {
   public boolean equals (Object obj) {
     return false;
   }
+
+    @Override
+    public Element conseguirNodes(Document doc) {
+        return doc.createElement("AnyTypeDenoter");
+    }
 }

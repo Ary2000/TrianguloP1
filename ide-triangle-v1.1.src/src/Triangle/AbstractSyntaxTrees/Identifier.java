@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class Identifier extends Terminal {
 
@@ -28,6 +30,15 @@ public class Identifier extends Terminal {
     return v.visitIdentifier(this, o);
   }
 
+  @Override
+    public Element conseguirNodes(Document doc) {
+        Element rootElement = doc.createElement("Identifier");
+        rootElement.setAttribute("value", spelling);
+        //rootElement.appendChild(type.conseguirNodes(doc));
+        //rootElement.appendChild(decl.conseguirNodes(doc));
+        return rootElement;
+    }
+  
   public TypeDenoter type;
   public AST decl; // Either a Declaration or a FieldTypeDenoter
 }

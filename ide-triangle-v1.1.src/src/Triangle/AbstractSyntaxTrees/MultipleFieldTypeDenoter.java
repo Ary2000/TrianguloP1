@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class MultipleFieldTypeDenoter extends FieldTypeDenoter {
 
@@ -39,6 +41,15 @@ public class MultipleFieldTypeDenoter extends FieldTypeDenoter {
     } else
       return false;
   }
+  
+  @Override
+    public Element conseguirNodes(Document doc) {
+        Element rootElement = doc.createElement("MultipleFieldTypeDenoter");
+        rootElement.appendChild(I.conseguirNodes(doc));
+        rootElement.appendChild(T.conseguirNodes(doc));
+        rootElement.appendChild(FT.conseguirNodes(doc));
+        return rootElement;
+    }
 
   public Identifier I;
   public TypeDenoter T;

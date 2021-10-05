@@ -6,6 +6,17 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import org.w3c.dom.Attr;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import java.io.File;
 /**
  *
  * @author Ary
@@ -21,6 +32,13 @@ public class RepeatDoUntilCommand extends Command {
         return v.visitRepeatDoUntilCommand(this, o);
     }
     
-    Expression e;
-    Command c;
+    public Element conseguirNodes(Document doc) {
+      Element rootElement = doc.createElement("RepeatDoUntilCommand");
+      rootElement.appendChild(e.conseguirNodes(doc));
+      rootElement.appendChild(c.conseguirNodes(doc));
+      return rootElement;
+  }
+    
+    public Expression e;
+    public Command c;
 }

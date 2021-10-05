@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class WhileCommand extends Command {
 
@@ -27,6 +29,14 @@ public class WhileCommand extends Command {
   public Object visit(Visitor v, Object o) {
     return v.visitWhileCommand(this, o);
   }
+  
+  @Override
+    public Element conseguirNodes(Document doc) {
+        Element rootElement = doc.createElement("WhileCommand");
+        rootElement.appendChild(E.conseguirNodes(doc));
+        rootElement.appendChild(C.conseguirNodes(doc));
+        return rootElement;
+    }
 
   public Expression E;
   public Command C;

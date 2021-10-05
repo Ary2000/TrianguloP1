@@ -4,12 +4,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/tian_/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/IDEReporter.java</file>
-            <file>file:/C:/Users/tian_/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/Compiler.java</file>
-            <file>file:/C:/Users/tian_/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/StdEnvironment.java</file>
-            <file>file:/C:/Users/tian_/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/ContextualAnalyzer/Checker.java</file>
-            <file>file:/C:/Users/tian_/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/IDECompiler.java</file>
-            <file>file:/C:/Users/tian_/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/SyntacticAnalyzer/Parser.java</file>
+
+            <file>file:/C:/Users/Ary/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/AbstractSyntaxTrees/SingleActualParameterSequence.java</file>
+            <file>file:/C:/Users/Ary/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/AbstractSyntaxTrees/AST.java</file>
+            <file>file:/C:/Users/Ary/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/AbstractSyntaxTrees/Declaration.java</file>
+            <file>file:/C:/Users/Ary/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/AbstractSyntaxTrees/IntegerLiteral.java</file>
+            <file>file:/C:/Users/Ary/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/AbstractSyntaxTrees/Operator.java</file>
+            <file>file:/C:/Users/Ary/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/IDECompiler.java</file>
+            <file>file:/C:/Users/Ary/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/AbstractSyntaxTrees/Identifier.java</file>
+            <file>file:/C:/Users/Ary/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Core/Visitors/TreeVisitor.java</file>
+            <file>file:/C:/Users/Ary/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/TreeDrawer/Drawer.java</file>
+
         </group>
     </open-files>
 </project-private>

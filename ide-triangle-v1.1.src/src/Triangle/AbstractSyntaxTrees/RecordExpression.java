@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class RecordExpression extends Expression {
 
@@ -26,6 +28,13 @@ public class RecordExpression extends Expression {
   public Object visit (Visitor v, Object o) {
     return v.visitRecordExpression(this, o);
   }
+  
+  @Override
+    public Element conseguirNodes(Document doc) {
+        Element rootElement = doc.createElement("RecordExpression");
+        rootElement.appendChild(RA.conseguirNodes(doc));
+        return rootElement;
+    }
 
   public RecordAggregate RA;
 }

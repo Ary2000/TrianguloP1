@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class EmptyFormalParameterSequence extends FormalParameterSequence {
 
@@ -26,6 +28,11 @@ public class EmptyFormalParameterSequence extends FormalParameterSequence {
     return v.visitEmptyFormalParameterSequence(this, o);
   }
 
+  @Override
+    public Element conseguirNodes(Document doc) {
+        return doc.createElement("ArrayTypeDenoter");
+    }
+  
   public boolean equals(Object fpsAST) {
     return (fpsAST instanceof EmptyFormalParameterSequence);
   }

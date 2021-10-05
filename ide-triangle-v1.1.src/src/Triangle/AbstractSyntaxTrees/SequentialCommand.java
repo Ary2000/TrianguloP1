@@ -15,6 +15,8 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class SequentialCommand extends Command {
 
@@ -27,6 +29,14 @@ public class SequentialCommand extends Command {
   public Object visit(Visitor v, Object o) {
     return v.visitSequentialCommand(this, o);
   }
+  
+  @Override
+    public Element conseguirNodes(Document doc) {
+        Element rootElement = doc.createElement("SequencialCommand");
+        rootElement.appendChild(C1.conseguirNodes(doc));
+        rootElement.appendChild(C2.conseguirNodes(doc));
+        return rootElement;
+    }
 
   public Command C1, C2;
 }
