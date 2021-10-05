@@ -56,6 +56,7 @@ import Triangle.AbstractSyntaxTrees.IntegerExpression;
 import Triangle.AbstractSyntaxTrees.IntegerLiteral;
 import Triangle.AbstractSyntaxTrees.LetCommand;
 import Triangle.AbstractSyntaxTrees.LetExpression;
+import Triangle.AbstractSyntaxTrees.LocalDeclaration;
 import Triangle.AbstractSyntaxTrees.MultipleActualParameterSequence;
 import Triangle.AbstractSyntaxTrees.MultipleArrayAggregate;
 import Triangle.AbstractSyntaxTrees.MultipleFieldTypeDenoter;
@@ -73,6 +74,8 @@ import Triangle.AbstractSyntaxTrees.RepeatDoUntilCommand;
 import Triangle.AbstractSyntaxTrees.RepeatDoWhileCommand;
 import Triangle.AbstractSyntaxTrees.RepeatForInCommand;
 import Triangle.AbstractSyntaxTrees.RepeatWhileDoCommand;
+import Triangle.AbstractSyntaxTrees.RecursiveDeclaration;
+import Triangle.AbstractSyntaxTrees.RepeatExpressionCommand;
 import Triangle.AbstractSyntaxTrees.RepeatForRangeCommand;
 import Triangle.AbstractSyntaxTrees.RepeatForRangeUntilCommand;
 import Triangle.AbstractSyntaxTrees.RepeatForRangeWhileCommand;
@@ -80,6 +83,7 @@ import Triangle.AbstractSyntaxTrees.RepeatInCommand;
 import Triangle.AbstractSyntaxTrees.RepeatUntilDoCommand;
 import Triangle.AbstractSyntaxTrees.SequentialCommand;
 import Triangle.AbstractSyntaxTrees.SequentialDeclaration;
+import Triangle.AbstractSyntaxTrees.SequentialProcFunc;
 import Triangle.AbstractSyntaxTrees.SimpleTypeDenoter;
 import Triangle.AbstractSyntaxTrees.SimpleVname;
 import Triangle.AbstractSyntaxTrees.SingleActualParameterSequence;
@@ -95,6 +99,7 @@ import Triangle.AbstractSyntaxTrees.UnaryExpression;
 import Triangle.AbstractSyntaxTrees.UnaryOperatorDeclaration;
 import Triangle.AbstractSyntaxTrees.VarActualParameter;
 import Triangle.AbstractSyntaxTrees.VarDeclaration;
+import Triangle.AbstractSyntaxTrees.VarDeclaration2;
 import Triangle.AbstractSyntaxTrees.VarFormalParameter;
 import Triangle.AbstractSyntaxTrees.Visitor;
 import Triangle.AbstractSyntaxTrees.VnameExpression;
@@ -1045,6 +1050,26 @@ public final class Checker implements Visitor {
 
     @Override
     public Object visitInVarDecl(InVarDecl ast, Object o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Object visitSequentialProcFunc(SequentialProcFunc ast, Object o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Object visitRecursiveDeclaration(RecursiveDeclaration ast, Object o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Object visitLocalDeclaration(LocalDeclaration ast, Object o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Object visitVarDeclaration2(VarDeclaration2 ast, Object o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

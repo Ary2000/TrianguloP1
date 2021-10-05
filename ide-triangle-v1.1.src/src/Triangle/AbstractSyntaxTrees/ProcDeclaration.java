@@ -18,7 +18,7 @@ import Triangle.SyntacticAnalyzer.SourcePosition;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-public class ProcDeclaration extends Declaration {
+public class ProcDeclaration extends ProcFunc {
 
   public ProcDeclaration (Identifier iAST, FormalParameterSequence fpsAST,
   		   Command cAST, SourcePosition thePosition) {
