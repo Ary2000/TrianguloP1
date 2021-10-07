@@ -11,6 +11,7 @@ import Triangle.SyntacticAnalyzer.SourceFile;
 import Triangle.SyntacticAnalyzer.Scanner;
 import Triangle.AbstractSyntaxTrees.Program;
 import Triangle.SyntacticAnalyzer.Parser;
+import Triangle.SyntacticAnalyzer.TokenPrinter;
 import Triangle.ContextualAnalyzer.Checker;
 import Triangle.CodeGenerator.Encoder;
 
@@ -24,6 +25,8 @@ import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import java.io.File;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 /** 
  * This is merely a reimplementation of the Triangle.Compiler class. We need
@@ -60,8 +63,8 @@ public class IDECompiler {
         report = new IDEReporter();
         Parser parser = new Parser(scanner, report);
         boolean success = false;
-        
         rootAST = parser.parseProgram();
+        
         if (report.numErrors == 0) {
             //System.out.println("Contextual Analysis ...");
             //Checker checker = new Checker(report);
@@ -78,14 +81,24 @@ public class IDECompiler {
                         DocumentBuilderFactory.newInstance();
                         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
                         Document doc = dBuilder.newDocument();
-                        
                         doc.appendChild(rootAST.conseguirNodes(doc));
-                        
                         TransformerFactory transformerFactory = TransformerFactory.newInstance();
                         Transformer transformer = transformerFactory.newTransformer();
                         DOMSource dmSource = new DOMSource(doc);
                         StreamResult result = new StreamResult(new File("resultado.xml"));
                         transformer.transform(dmSource, result);
+
+                        //------------HTML HTML HTML ADD FOR JACOB ------------------------------                    
+                        
+                        SourceFile source2 = new SourceFile(sourceName);
+                        Scanner scanner2 = new Scanner(source2);
+                        TokenPrinter tP = new TokenPrinter(scanner2);
+                        doc = tP.printTokensHtml();
+                        dmSource = new DOMSource(doc);
+                        String sourceNameHtml = sourceName.replace(".tri", ".html");
+                        result = new StreamResult(new File(sourceNameHtml));
+                        transformer.transform(dmSource, result);
+                        
                         
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -102,6 +115,7 @@ public class IDECompiler {
         
         return(success);
     }
+    
       
     /**
      * Returns the line number where the first error is.
