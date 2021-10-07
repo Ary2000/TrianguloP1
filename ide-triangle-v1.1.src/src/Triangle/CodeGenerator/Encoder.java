@@ -1119,4 +1119,5 @@ public final class Encoder implements Visitor {
     public Object visitVarDeclaration2(VarDeclaration2 ast, Object o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
 }

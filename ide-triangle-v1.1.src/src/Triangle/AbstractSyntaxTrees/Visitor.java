@@ -123,6 +123,7 @@ public interface Visitor {
   public abstract Object visitProgram(Program ast, Object o);
 
 
+
     public Object visitWhenCaseLiteral(WhenCaseLiteral aThis, Object o);
 
     public Object visitWhenCaseRange(WhenCaseRange aThis, Object o);
@@ -134,6 +135,7 @@ public interface Visitor {
     public Object visitElseCaseCom(ElseCaseCom aThis, Object o);
 
     public abstract Object visitInVarDecl(InVarDecl ast, Object o);
+
 
 
 }
