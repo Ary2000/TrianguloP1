@@ -57,6 +57,12 @@ public interface Visitor {
   public abstract Object visitFuncDeclaration(FuncDeclaration ast, Object o);
   public abstract Object visitProcDeclaration(ProcDeclaration ast, Object o);
   public abstract Object visitSequentialDeclaration(SequentialDeclaration ast, Object o);
+  //agregacion jacob
+  public abstract Object visitSequentialProcFunc(SequentialProcFunc ast, Object o);
+  public abstract Object visitRecursiveDeclaration(RecursiveDeclaration ast, Object o);
+  public abstract Object visitLocalDeclaration(LocalDeclaration ast, Object o);
+  public abstract Object visitVarDeclaration2(VarDeclaration2 ast, Object o);
+  //fin de agregacion
   public abstract Object visitTypeDeclaration(TypeDeclaration ast, Object o);
   public abstract Object visitUnaryOperatorDeclaration(UnaryOperatorDeclaration ast, Object o);
   public abstract Object visitVarDeclaration(VarDeclaration ast, Object o);
@@ -116,6 +122,20 @@ public interface Visitor {
   // Programs
   public abstract Object visitProgram(Program ast, Object o);
 
-  public abstract Object visitInVarDecl(InVarDecl ast, Object o);
+
+
+    public Object visitWhenCaseLiteral(WhenCaseLiteral aThis, Object o);
+
+    public Object visitWhenCaseRange(WhenCaseRange aThis, Object o);
+
+    public Object visitCaseLiteralInt(CaseLiteralInt aThis, Object o);
+
+    public Object visitCaseLiteralChar(CaseLiteralChar aThis, Object o);
+
+    public Object visitElseCaseCom(ElseCaseCom aThis, Object o);
+
+    public abstract Object visitInVarDecl(InVarDecl ast, Object o);
+
+
 
 }

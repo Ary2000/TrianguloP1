@@ -1,1 +1,15 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><Program><LetCommand><VarDeclaration><Identifier value="begin"/><SimpleTypeDenoter><Identifier value="Integer"/></SimpleTypeDenoter></VarDeclaration><SequencialCommand><CallCommand><Identifier value="putint"/><SingleActualParameterSequence><ConstActualParameter><VnameExpression><SimpleVname><Identifier value="begin"/></SimpleVname></VnameExpression></ConstActualParameter></SingleActualParameterSequence></CallCommand><CallCommand><Identifier value="puteol"/><ArrayTypeDenoter/></CallCommand></SequencialCommand></LetCommand></Program>
+<?xml version="1.0" standalone="yes"?>
+<Program>
+<RepeatDoUntilCommand>
+<EmptyCommand/>
+<BinaryExpression>
+<IntegerExpression>
+<IntegerLiteral value="4"/>
+</IntegerExpression>
+<Operator value="="/>
+<IntegerExpression>
+<IntegerLiteral value="4"/>
+</IntegerExpression>
+</BinaryExpression>
+</RepeatDoUntilCommand>
+</Program>

@@ -1,5 +1,6 @@
 package Triangle.SyntacticAnalyzer;
 
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.parsers.DocumentBuilder;
@@ -7,6 +8,8 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+
+
 
 public class TokenPrinter {
 
@@ -18,13 +21,19 @@ public class TokenPrinter {
   }
 
   public void printTokens() {
+
     currentToken = lexicalAnalyser.scanCodeToHtml();
+
+    currentToken = lexicalAnalyser.scan();
+
+
     while (currentToken.kind != Token.EOT) {
       if (currentToken.kind == Token.INTLITERAL ||
               currentToken.kind == Token.CHARLITERAL ||
               currentToken.kind == Token.IDENTIFIER ||
               currentToken.kind == Token.OPERATOR)
         System.out.println(currentToken.spelling);
+
       else if(currentToken.kind == -1){
           System.out.println(currentToken.spelling);
       }
