@@ -23,8 +23,8 @@ public class WhenCaseLiteral extends Cases {
         return v.visitWhenCaseLiteral(this, o);
     }
     
-    caseLiteral cl;
-    Command c;
+    public caseLiteral cl;
+    public Command c;
 }/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates

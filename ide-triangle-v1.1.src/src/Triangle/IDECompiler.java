@@ -13,6 +13,8 @@ import Triangle.AbstractSyntaxTrees.Program;
 import Triangle.SyntacticAnalyzer.Parser;
 import Triangle.ContextualAnalyzer.Checker;
 import Triangle.CodeGenerator.Encoder;
+import Triangle.SyntacticAnalyzer.TokenPrinter;
+import Triangle.TreeWriterHTLM.Writer;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
@@ -73,6 +75,7 @@ public class IDECompiler {
                 
                 if (report.numErrors == 0) {
                     //encoder.saveObjectProgram(sourceName.replace(".tri", ".tam"));
+                    /*
                     try {
                         DocumentBuilderFactory dbFactory =
                         DocumentBuilderFactory.newInstance();
@@ -90,13 +93,21 @@ public class IDECompiler {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
+                    */
+                    Writer writer = new Writer("Resultado.xml");
+                    writer.write(rootAST);
                     success = true;
                 }
             }
         }
 
         if (success)
+        {
             System.out.println("Compilation was successful.");
+            
+            //TokenPrinter tokenPrinter = new TokenPrinter(scanner);
+            //tokenPrinter.printTokens();
+        }
         else
             System.out.println("Compilation was unsuccessful.");
         

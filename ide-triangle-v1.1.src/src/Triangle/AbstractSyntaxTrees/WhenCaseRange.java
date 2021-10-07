@@ -24,8 +24,8 @@ public class WhenCaseRange extends Cases {
         return v.visitWhenCaseRange(this, o);
     }
     
-    caseLiteral cl1,cl2;
-    Command c;
+    public caseLiteral cl1,cl2;
+    public Command c;
 }/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
