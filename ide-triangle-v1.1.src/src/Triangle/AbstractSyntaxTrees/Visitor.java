@@ -61,7 +61,7 @@ public interface Visitor {
   public abstract Object visitSequentialProcFunc(SequentialProcFunc ast, Object o);
   public abstract Object visitRecursiveDeclaration(RecursiveDeclaration ast, Object o);
   public abstract Object visitLocalDeclaration(LocalDeclaration ast, Object o);
-  public abstract Object visitVarDeclaration2(VarDeclaration2 ast, Object o);
+  public abstract Object visitVarInitDeclaration(VarInitDeclaration ast, Object o);
   //fin de agregacion
   public abstract Object visitTypeDeclaration(TypeDeclaration ast, Object o);
   public abstract Object visitUnaryOperatorDeclaration(UnaryOperatorDeclaration ast, Object o);

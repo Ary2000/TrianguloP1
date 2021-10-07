@@ -1,9 +1,20 @@
 package Triangle.TreeWriterHTLM;
 
 import Triangle.AbstractSyntaxTrees.Program;
+import Triangle.SyntacticAnalyzer.Scanner;
+import Triangle.SyntacticAnalyzer.SourceFile;
+import Triangle.SyntacticAnalyzer.TokenPrinter;
+import java.io.File;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import org.w3c.dom.Document;
 
 public class Writer {
 
@@ -32,5 +43,22 @@ public class Writer {
       e.printStackTrace();
     }
   }
+  public void writeHtml(String sourceName){
+      try {
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            SourceFile source2 = new SourceFile(sourceName);
+            Scanner scanner2 = new Scanner(source2);
+            TokenPrinter tP = new TokenPrinter(scanner2);
+            Document doc = tP.printTokensHtml();
+            DOMSource dmSource = new DOMSource(doc);
+            String sourceNameHtml = sourceName.replace(".tri", ".html");
+            StreamResult result = new StreamResult(new File(sourceNameHtml));
+            transformer.transform(dmSource, result);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+                    
+    }
 
 }

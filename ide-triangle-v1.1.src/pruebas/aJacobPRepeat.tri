@@ -1,0 +1,10 @@
+let
+
+	var i: Integer
+
+in
+
+	repeat for i := range 1 .. 5 do repeat for i := range 5 .. 6 do skip ; skip end end
+	
+
+end

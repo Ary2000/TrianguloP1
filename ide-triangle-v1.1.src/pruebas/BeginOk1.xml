@@ -2,33 +2,28 @@
 <Program>
 <LetCommand>
 <VarDeclaration>
-<Identifier value="i"/>
+<Identifier value="begin"/>
 <SimpleTypeDenoter>
 <Identifier value="Integer"/>
 </SimpleTypeDenoter>
 </VarDeclaration>
-<RepeatForRangeCommand>
-<RangeVarDecl>
-<Identifier value="i"/>
-<IntegerExpression>
-<IntegerLiteral value="1"/>
-</IntegerExpression>
-</RangeVarDecl>
-<IntegerExpression>
-<IntegerLiteral value="5"/>
-</IntegerExpression>
+<SequentialCommand>
 <CallCommand>
 <Identifier value="putint"/>
 <SingleActualParameterSequence>
 <ConstActualParameter>
 <VnameExpression>
 <SimpleVname>
-<Identifier value="i"/>
+<Identifier value="begin"/>
 </SimpleVname>
 </VnameExpression>
 </ConstActualParameter>
 </SingleActualParameterSequence>
 </CallCommand>
-</RepeatForRangeCommand>
+<CallCommand>
+<Identifier value="puteol"/>
+<EmptyActualParameterSequence/>
+</CallCommand>
+</SequentialCommand>
 </LetCommand>
 </Program>

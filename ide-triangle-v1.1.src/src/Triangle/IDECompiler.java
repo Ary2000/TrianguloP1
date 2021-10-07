@@ -66,7 +66,9 @@ public class IDECompiler {
         Parser parser = new Parser(scanner, report);
         boolean success = false;
         rootAST = parser.parseProgram();
-        
+        String sourceNameXml = sourceName.replace(".tri", ".xml");
+        Writer writer = new Writer(sourceNameXml);
+        writer.writeHtml(sourceName);
         if (report.numErrors == 0) {
             //System.out.println("Contextual Analysis ...");
             //Checker checker = new Checker(report);
@@ -78,36 +80,8 @@ public class IDECompiler {
                 
                 if (report.numErrors == 0) {
                     //encoder.saveObjectProgram(sourceName.replace(".tri", ".tam"));
-                    /*
-                    try {
-                        DocumentBuilderFactory dbFactory =
-                        DocumentBuilderFactory.newInstance();
-                        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-                        Document doc = dBuilder.newDocument();
-                        doc.appendChild(rootAST.conseguirNodes(doc));
-                        TransformerFactory transformerFactory = TransformerFactory.newInstance();
-                        Transformer transformer = transformerFactory.newTransformer();
-                        DOMSource dmSource = new DOMSource(doc);
-                        StreamResult result = new StreamResult(new File("resultado.xml"));
-                        transformer.transform(dmSource, result);
-
-                        //------------HTML HTML HTML ADD FOR JACOB ------------------------------                    
-                        
-                        SourceFile source2 = new SourceFile(sourceName);
-                        Scanner scanner2 = new Scanner(source2);
-                        TokenPrinter tP = new TokenPrinter(scanner2);
-                        doc = tP.printTokensHtml();
-                        dmSource = new DOMSource(doc);
-                        String sourceNameHtml = sourceName.replace(".tri", ".html");
-                        result = new StreamResult(new File(sourceNameHtml));
-                        transformer.transform(dmSource, result);
-                        
-                        
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    */
-                    Writer writer = new Writer("Resultado.xml");
+                    
+                    
                     writer.write(rootAST);
                     success = true;
                 }

@@ -76,8 +76,8 @@ import Triangle.AbstractSyntaxTrees.UnaryExpression;
 import Triangle.AbstractSyntaxTrees.UnaryOperatorDeclaration;
 import Triangle.AbstractSyntaxTrees.VarActualParameter;
 import Triangle.AbstractSyntaxTrees.VarDeclaration;
-import Triangle.AbstractSyntaxTrees.VarDeclaration2;
 import Triangle.AbstractSyntaxTrees.VarFormalParameter;
+import Triangle.AbstractSyntaxTrees.VarInitDeclaration;
 import Triangle.AbstractSyntaxTrees.Visitor;
 import Triangle.AbstractSyntaxTrees.VnameExpression;
 import Triangle.AbstractSyntaxTrees.WhenCaseLiteral;
@@ -716,15 +716,6 @@ public class WriterVisitor implements Visitor {
     }
 
     @Override
-    public Object visitVarDeclaration2(VarDeclaration2 ast, Object o) {
-        writeLineHTML("<VarDeclaration2>");
-        ast.I.visit(this, null);
-        ast.E.visit(this, null);
-        writeLineHTML("</VarDeclaration2>");
-        return null;   
-    }
-
-    @Override
     public Object visitWhenCaseLiteral(WhenCaseLiteral ast, Object o) {
         writeLineHTML("<WhenCaseLiteral>");
         ast.cl.visit(this, null);
@@ -774,6 +765,15 @@ public class WriterVisitor implements Visitor {
         ast.E.visit(this, null);
         writeLineHTML("</InVarDecl>");
         return null;
+    }
+
+    @Override
+    public Object visitVarInitDeclaration(VarInitDeclaration ast, Object o) {
+        writeLineHTML("<VarInitDeclaration>");
+        ast.I.visit(this, null);
+        ast.E.visit(this, null);
+        writeLineHTML("</VarInitDeclaration>");
+        return null; 
     }
 
 }

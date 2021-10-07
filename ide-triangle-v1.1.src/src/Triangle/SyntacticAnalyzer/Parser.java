@@ -103,7 +103,7 @@ import Triangle.AbstractSyntaxTrees.WhenCaseRange;
 import Triangle.AbstractSyntaxTrees.caseLiteral;
 import Triangle.AbstractSyntaxTrees.elseCase;
 import Triangle.AbstractSyntaxTrees.SequentialProcFunc;
-import Triangle.AbstractSyntaxTrees.VarDeclaration2;
+import Triangle.AbstractSyntaxTrees.VarInitDeclaration;
 
 public class Parser {
 
@@ -960,7 +960,7 @@ public class Parser {
             accept(Token.BECOMES);
             Expression eAST = parseExpression();
             finish(declarationPos);
-            declarationAST = new VarDeclaration2(iAST, eAST, declarationPos);
+            declarationAST = new VarInitDeclaration(iAST, eAST, declarationPos);
         }
       }
       break;

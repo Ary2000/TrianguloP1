@@ -11,9 +11,9 @@ import Triangle.SyntacticAnalyzer.SourcePosition;
  *
  * @author yeico
  */
-public class VarDeclaration2 extends Declaration{
+public class VarInitDeclaration extends Declaration{
 
-    public VarDeclaration2(Identifier iAST, Expression eAST, SourcePosition thePosition) {
+    public VarInitDeclaration(Identifier iAST, Expression eAST, SourcePosition thePosition) {
         super(thePosition);
         I = iAST;
         E = eAST;
@@ -21,7 +21,7 @@ public class VarDeclaration2 extends Declaration{
 
     @Override
     public Object visit(Visitor v, Object o) {
-        return v.visitVarDeclaration2(this, o);
+        return v.visitVarInitDeclaration(this, o);
         
     }
     public Identifier I;

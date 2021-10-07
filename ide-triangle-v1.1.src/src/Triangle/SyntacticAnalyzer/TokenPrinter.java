@@ -65,7 +65,8 @@ public class TokenPrinter {
           currentToken = lexicalAnalyser.scanCodeToHtml();
           while (currentToken.kind != Token.EOT) {
             if (currentToken.kind == Token.IDENTIFIER ||
-                    currentToken.kind == Token.OPERATOR){
+                    currentToken.kind == Token.OPERATOR ||
+                    currentToken.kind > 29){
                 //System.out.println(currentToken.spelling);
                 Element var = doc.createElement("font");
                 var.setAttribute("color","Black");      

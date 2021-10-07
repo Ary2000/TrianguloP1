@@ -81,8 +81,8 @@ import Triangle.AbstractSyntaxTrees.UnaryExpression;
 import Triangle.AbstractSyntaxTrees.UnaryOperatorDeclaration;
 import Triangle.AbstractSyntaxTrees.VarActualParameter;
 import Triangle.AbstractSyntaxTrees.VarDeclaration;
-import Triangle.AbstractSyntaxTrees.VarDeclaration2;
 import Triangle.AbstractSyntaxTrees.VarFormalParameter;
+import Triangle.AbstractSyntaxTrees.VarInitDeclaration;
 import Triangle.AbstractSyntaxTrees.Visitor;
 import Triangle.AbstractSyntaxTrees.VnameExpression;
 import Triangle.AbstractSyntaxTrees.WhenCaseLiteral;
@@ -518,47 +518,47 @@ public class TreeVisitor implements Visitor {
     }
 
     @Override
-    public Object visitWhenCaseLiteral(WhenCaseLiteral aThis, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Object visitWhenCaseLiteral(WhenCaseLiteral ast, Object o) {
+        return(createUnary("Case-When-Literal",ast.cl));
     }
 
     @Override
-    public Object visitWhenCaseRange(WhenCaseRange aThis, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Object visitWhenCaseRange(WhenCaseRange ast, Object o) {
+        return(createBinary("Case-When-Range",ast.cl1,ast.cl2));
     }
 
     @Override
-    public Object visitCaseLiteralInt(CaseLiteralInt aThis, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Object visitCaseLiteralInt(CaseLiteralInt ast, Object o) {
+        return(createUnary("Case-Literal-Character",ast.il));
     }
 
     @Override
-    public Object visitCaseLiteralChar(CaseLiteralChar aThis, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Object visitCaseLiteralChar(CaseLiteralChar ast, Object o) {
+        return(createUnary("Case-Literal-Character",ast.chr));
     }
 
     @Override
-    public Object visitElseCaseCom(ElseCaseCom aThis, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Object visitElseCaseCom(ElseCaseCom ast, Object o) {
+        return(createUnary("ElseCase", ast.c));
     }
 
     @Override
     public Object visitSequentialProcFunc(SequentialProcFunc ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return(createBinary("ProcFuncsDeclaration",ast.PF1,ast.PF2));
     }
 
     @Override
     public Object visitRecursiveDeclaration(RecursiveDeclaration ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return(createUnary("RecursiveDeclaration", ast.P));        
     }
 
     @Override
     public Object visitLocalDeclaration(LocalDeclaration ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return(createBinary("LocalDeclaration", ast.D1, ast.D2));
     }
 
     @Override
-    public Object visitVarDeclaration2(VarDeclaration2 ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Object visitVarInitDeclaration(VarInitDeclaration ast, Object o) {
+        return(createBinary("VarInitDeclaration", ast.I, ast.E));
     }
 }
