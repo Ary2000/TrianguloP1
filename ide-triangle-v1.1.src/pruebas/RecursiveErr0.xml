@@ -1,0 +1,35 @@
+<?xml version="1.0" standalone="yes"?>
+<Program>
+<LetCommand>
+<RecursiveDeclaration>
+<ProcDeclaration>
+<Identifier value="doble"/>
+<SingleFormalParameterSequence>
+<VarFormalParameter>
+<Identifier value="i"/>
+<SimpleTypeDenoter>
+<Identifier value="Integer"/>
+</SimpleTypeDenoter>
+</VarFormalParameter>
+</SingleFormalParameterSequence>
+<AssignCommand>
+<SimpleVname>
+<Identifier value="i"/>
+</SimpleVname>
+<BinaryExpression>
+<VnameExpression>
+<SimpleVname>
+<Identifier value="i"/>
+</SimpleVname>
+</VnameExpression>
+<Operator value="*"/>
+<IntegerExpression>
+<IntegerLiteral value="2"/>
+</IntegerExpression>
+</BinaryExpression>
+</AssignCommand>
+</ProcDeclaration>
+</RecursiveDeclaration>
+<EmptyCommand/>
+</LetCommand>
+</Program>
