@@ -50,6 +50,7 @@ import Triangle.AbstractSyntaxTrees.FuncFormalParameter;
 import Triangle.AbstractSyntaxTrees.Identifier;
 import Triangle.AbstractSyntaxTrees.IfCommand;
 import Triangle.AbstractSyntaxTrees.IfExpression;
+import Triangle.AbstractSyntaxTrees.IfSequencialCommand;
 import Triangle.AbstractSyntaxTrees.IntegerExpression;
 import Triangle.AbstractSyntaxTrees.IntegerLiteral;
 import Triangle.AbstractSyntaxTrees.LetCommand;
@@ -448,9 +449,11 @@ public class Parser {
         Command c1AST = parseCommand();
         while(currentToken.kind==Token.LINE) {
             acceptIt();
+            Expression extraExpr = parseExpression();
+            accept(Token.THEN);
             Command extraCmd = parseCommand();
             //Preguntar sobre commandPos
-            c1AST = new SequentialCommand(c1AST, extraCmd, commandPos);
+            c1AST = new IfSequencialCommand(c1AST, extraExpr, extraCmd, commandPos);
         }
         accept(Token.ELSE);
         Command c2AST = parseCommand();

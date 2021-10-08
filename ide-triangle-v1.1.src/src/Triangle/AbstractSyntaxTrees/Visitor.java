@@ -124,17 +124,19 @@ public interface Visitor {
 
 
 
-    public Object visitWhenCaseLiteral(WhenCaseLiteral aThis, Object o);
+    public abstract Object visitWhenCaseLiteral(WhenCaseLiteral aThis, Object o);
 
-    public Object visitWhenCaseRange(WhenCaseRange aThis, Object o);
+    public abstract Object visitWhenCaseRange(WhenCaseRange aThis, Object o);
 
-    public Object visitCaseLiteralInt(CaseLiteralInt aThis, Object o);
+    public abstract Object visitCaseLiteralInt(CaseLiteralInt aThis, Object o);
 
-    public Object visitCaseLiteralChar(CaseLiteralChar aThis, Object o);
+    public abstract Object visitCaseLiteralChar(CaseLiteralChar aThis, Object o);
 
-    public Object visitElseCaseCom(ElseCaseCom aThis, Object o);
+    public abstract Object visitElseCaseCom(ElseCaseCom aThis, Object o);
 
     public abstract Object visitInVarDecl(InVarDecl ast, Object o);
+
+    public abstract Object visitIfSequencialCommand(IfSequencialCommand ast, Object o);
 
 
 

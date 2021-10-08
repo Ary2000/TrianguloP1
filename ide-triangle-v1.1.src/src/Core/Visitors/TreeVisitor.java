@@ -35,6 +35,7 @@ import Triangle.AbstractSyntaxTrees.FuncFormalParameter;
 import Triangle.AbstractSyntaxTrees.Identifier;
 import Triangle.AbstractSyntaxTrees.IfCommand;
 import Triangle.AbstractSyntaxTrees.IfExpression;
+import Triangle.AbstractSyntaxTrees.IfSequencialCommand;
 import Triangle.AbstractSyntaxTrees.InVarDecl;
 import Triangle.AbstractSyntaxTrees.IntTypeDenoter;
 import Triangle.AbstractSyntaxTrees.IntegerExpression;
@@ -560,5 +561,10 @@ public class TreeVisitor implements Visitor {
     @Override
     public Object visitVarInitDeclaration(VarInitDeclaration ast, Object o) {
         return(createBinary("VarInitDeclaration", ast.I, ast.E));
+    }
+
+    @Override
+    public Object visitIfSequencialCommand(IfSequencialCommand ast, Object o) {
+        return(createTernary("IfSequencialCommand", ast.C1, ast.E, ast.C2));
     }
 }

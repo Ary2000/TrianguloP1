@@ -30,6 +30,7 @@ import Triangle.AbstractSyntaxTrees.FuncFormalParameter;
 import Triangle.AbstractSyntaxTrees.Identifier;
 import Triangle.AbstractSyntaxTrees.IfCommand;
 import Triangle.AbstractSyntaxTrees.IfExpression;
+import Triangle.AbstractSyntaxTrees.IfSequencialCommand;
 import Triangle.AbstractSyntaxTrees.InVarDecl;
 import Triangle.AbstractSyntaxTrees.IntTypeDenoter;
 import Triangle.AbstractSyntaxTrees.IntegerExpression;
@@ -774,6 +775,16 @@ public class WriterVisitor implements Visitor {
         ast.E.visit(this, null);
         writeLineHTML("</VarInitDeclaration>");
         return null; 
+    }
+
+    @Override
+    public Object visitIfSequencialCommand(IfSequencialCommand ast, Object o) {
+        writeLineHTML("<IfSequencialCommand>");
+        ast.C1.visit(this, null);
+        ast.E.visit(this, null);
+        ast.C2.visit(this, null);
+        writeLineHTML("</IfSequencialCommand>");
+        return null;
     }
 
 }
