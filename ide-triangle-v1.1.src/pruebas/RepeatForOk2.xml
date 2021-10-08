@@ -1,0 +1,18 @@
+<?xml version="1.0" standalone="yes"?>
+<Program>
+<RepeatForRangeCommand>
+<RangeVarDecl>
+<Identifier value="i"/>
+<IntegerExpression>
+<IntegerLiteral value="5"/>
+</IntegerExpression>
+</RangeVarDecl>
+<IntegerExpression>
+<IntegerLiteral value="6"/>
+</IntegerExpression>
+<SequentialCommand>
+<EmptyCommand/>
+<EmptyCommand/>
+</SequentialCommand>
+</RepeatForRangeCommand>
+</Program>

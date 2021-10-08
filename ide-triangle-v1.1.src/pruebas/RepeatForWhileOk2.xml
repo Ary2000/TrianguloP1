@@ -1,0 +1,29 @@
+<?xml version="1.0" standalone="yes"?>
+<Program>
+<RepeatForRangeWhileCommand>
+<RangeVarDecl>
+<Identifier value="i"/>
+<IntegerExpression>
+<IntegerLiteral value="5"/>
+</IntegerExpression>
+</RangeVarDecl>
+<IntegerExpression>
+<IntegerLiteral value="6"/>
+</IntegerExpression>
+<BinaryExpression>
+<VnameExpression>
+<SimpleVname>
+<Identifier value="i"/>
+</SimpleVname>
+</VnameExpression>
+<Operator value="&lt;"/>
+<IntegerExpression>
+<IntegerLiteral value="5"/>
+</IntegerExpression>
+</BinaryExpression>
+<SequentialCommand>
+<EmptyCommand/>
+<EmptyCommand/>
+</SequentialCommand>
+</RepeatForRangeWhileCommand>
+</Program>

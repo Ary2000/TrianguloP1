@@ -1,0 +1,13 @@
+<?xml version="1.0" standalone="yes"?>
+<Program>
+<SequentialCommand>
+<SequentialCommand>
+<EmptyCommand/>
+<CallCommand>
+<Identifier value="puteol"/>
+<EmptyActualParameterSequence/>
+</CallCommand>
+</SequentialCommand>
+<EmptyCommand/>
+</SequentialCommand>
+</Program>
