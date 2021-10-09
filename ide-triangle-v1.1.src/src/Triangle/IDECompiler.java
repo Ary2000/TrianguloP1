@@ -69,6 +69,7 @@ public class IDECompiler {
         String sourceNameXml = sourceName.replace(".tri", ".xml");
         Writer writer = new Writer(sourceNameXml);
         writer.writeHtml(sourceName);
+        // Comentario de lineas que implementan el analizador contextual y el generador de codigo
         if (report.numErrors == 0) {
             //System.out.println("Contextual Analysis ...");
             //Checker checker = new Checker(report);
@@ -81,7 +82,7 @@ public class IDECompiler {
                 if (report.numErrors == 0) {
                     //encoder.saveObjectProgram(sourceName.replace(".tri", ".tam"));
                     
-                    
+                    //Creacion de xml
                     writer.write(rootAST);
                     success = true;
                 }

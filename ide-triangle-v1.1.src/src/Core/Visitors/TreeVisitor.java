@@ -104,6 +104,9 @@ public class TreeVisitor implements Visitor {
     /**
      * Creates a new instance of TreeVisitor.
      */
+    
+    // Implementacion de las nuevas reglas
+    
     public TreeVisitor() {
     }
     

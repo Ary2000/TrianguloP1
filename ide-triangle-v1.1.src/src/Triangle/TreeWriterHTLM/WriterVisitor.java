@@ -595,6 +595,8 @@ public class WriterVisitor implements Visitor {
       return operator;
   }
 
+   // Implementacion de nuevas reglas
+  
     @Override
     public Object visitRangeVarDecl(RangeVarDecl ast, Object o) {
         writeLineHTML("<RangeVarDecl>");

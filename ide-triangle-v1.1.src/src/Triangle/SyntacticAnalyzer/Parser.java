@@ -405,9 +405,10 @@ public class Parser {
 
     SourcePosition commandPos = new SourcePosition();
     start(commandPos);
-
+    // Insercion de nuevas alternativas para el singleCommand
     switch (currentToken.kind) {
 
+    // Alternativas conservadas
     case Token.IDENTIFIER:
       {
         Identifier iAST = parseIdentifier();
@@ -428,7 +429,8 @@ public class Parser {
         }
       }
       break;
-
+      
+    // Implementacion del let
     case Token.LET:
       {
         acceptIt();
@@ -440,7 +442,8 @@ public class Parser {
         commandAST = new LetCommand(dAST, cAST, commandPos);
       }
       break;
-
+      
+    // Implementacion del if
     case Token.IF:
       {
         acceptIt();
@@ -462,25 +465,14 @@ public class Parser {
         commandAST = new IfCommand(eAST, c1AST, c2AST, commandPos);
       }
       break;
-/*
-    case Token.WHILE:
-      {
-        acceptIt();
-        Expression eAST = parseExpression();
-        accept(Token.DO);
-        Command cAST = parseSingleCommand();
-        finish(commandPos);
-        commandAST = new WhileCommand(eAST, cAST, commandPos);
-      }
-      break;
-*/
-      
+    // Implementacion de las alternativas repeat  
     case Token.REPEAT:
     {
         acceptIt();
         switch (currentToken.kind) {
             case Token.WHILE:
             case Token.UNTIL: {
+                // Identificador entre while y until para no tener que copiar y pegar codigo
                 int diferenciador = currentToken.kind;
                 acceptIt();
                 Expression eAST = parseExpression();
@@ -497,6 +489,7 @@ public class Parser {
             case Token.DO: {
                 acceptIt();
                 Command cAST = parseCommand();
+                // Identificador entre while y until para no tener que copiar y pegar codigo
                 int diferenciador = currentToken.kind;
                 if(currentToken.kind == Token.WHILE)
                     acceptIt();
@@ -531,6 +524,7 @@ public class Parser {
                         }
                         case Token.UNTIL:
                         case Token.WHILE: {
+                            // Identificador entre while y until para no tener que copiar y pegar codigo
                             int identificador = currentToken.kind;
                             acceptIt();
                             Expression eAST3 = parseExpression();
@@ -560,6 +554,7 @@ public class Parser {
         break;
     }
       
+   // Eliminado epsilon y reemplazado por skip
     case Token.SKIP:
 
       acceptIt();

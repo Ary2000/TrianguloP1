@@ -15,7 +15,7 @@
 package Triangle.AbstractSyntaxTrees;
 
 public interface Visitor {
-   //
+   // Implemetacion de metodos abstractos para las reglas
   public abstract Object visitRangeVarDecl(RangeVarDecl ast, Object o); 
 
   // Commands
