@@ -222,7 +222,7 @@ public class Parser {
       currentToken = lexicalAnalyser.scan();
     } else {
       CL = null;
-      syntacticError("character literal expected here", "");
+      syntacticError("character literal expected here", " ");
     }
     return CL;
   }
@@ -835,14 +835,22 @@ public class Parser {
       SourcePosition procFuncPos = new SourcePosition();
       start(procFuncPos);
       procFuncAST = parseProcFunc();
-      while (currentToken.kind == Token.LINE) {
-        acceptIt();
-        ProcFunc p2AST = parseProcFunc();
-        finish(procFuncPos);
-        procFuncAST = new SequentialProcFunc(procFuncAST, p2AST,
-          procFuncPos);
+      if(currentToken.kind == Token.LINE){
+          while (currentToken.kind == Token.LINE) {
+            acceptIt();
+            ProcFunc p2AST = parseProcFunc();
+            finish(procFuncPos);
+            procFuncAST = new SequentialProcFunc(procFuncAST, p2AST,
+              procFuncPos);
+          }
+          return procFuncAST;
       }
-      return procFuncAST;
+      else{
+          syntacticError("\"%\" cannot start a PROC-FUNCS",
+                currentToken.spelling);
+          return null;
+      }
+      
     }
     ProcFunc parseProcFunc() throws SyntaxError {
         ProcFunc procFuncAST = null; // in case there's a syntactic error

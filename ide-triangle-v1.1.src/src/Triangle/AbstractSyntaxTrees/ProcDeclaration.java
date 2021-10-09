@@ -15,10 +15,9 @@
 package Triangle.AbstractSyntaxTrees;
 
 import Triangle.SyntacticAnalyzer.SourcePosition;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
 
-public class ProcDeclaration extends ProcFunc {
+
+public class ProcDeclaration extends ProcFunc{
 
   public ProcDeclaration (Identifier iAST, FormalParameterSequence fpsAST,
   		   Command cAST, SourcePosition thePosition) {
@@ -31,15 +30,6 @@ public class ProcDeclaration extends ProcFunc {
   public Object visit (Visitor v, Object o) {
     return v.visitProcDeclaration(this, o);
   }
-
-  @Override
-    public Element conseguirNodes(Document doc) {
-        Element rootElement = doc.createElement("ProcDeclaration");
-        rootElement.appendChild(I.conseguirNodes(doc));
-        rootElement.appendChild(FPS.conseguirNodes(doc));
-        rootElement.appendChild(C.conseguirNodes(doc));
-        return rootElement;
-    }
   
   public Identifier I;
   public FormalParameterSequence FPS;
