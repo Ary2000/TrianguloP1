@@ -128,6 +128,7 @@ public final class Scanner {
       } else
         return Token.ERROR;
 
+    // Implementado caso de dos puntos
     case '.':
       takeIt();
       if (currentChar == '.') {
@@ -182,6 +183,7 @@ public final class Scanner {
       takeIt();
       return Token.RCURLY;
     
+    //Implementado linea
     case '|':
       takeIt();
       return Token.LINE;
