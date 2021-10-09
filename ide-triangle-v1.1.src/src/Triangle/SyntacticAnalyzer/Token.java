@@ -58,6 +58,7 @@ final class Token extends Object {
 
   // Token classes...
 
+  // Agregado, removido y modificado literales para el uso de triangulo xt
   public static final int
 
     // literals, identifiers, operators...
@@ -114,7 +115,7 @@ final class Token extends Object {
     // special tokens...
     EOT			= 44,
     ERROR		= 45;
-
+// Agregado, removido y modificado literales para el uso de triangulo xt
   private static String[] tokenTable = new String[] {
     "<int>",
     "<char>",
