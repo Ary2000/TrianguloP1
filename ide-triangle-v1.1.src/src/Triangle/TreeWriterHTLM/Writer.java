@@ -43,14 +43,17 @@ public class Writer {
       e.printStackTrace();
     }
   }
-  public void writeHtml(String sourceName){
+  //****************************************
+ //*        AGREGACION DE JACOB           *
+ //****************************************
+  public void writeHtml(String sourceName){  //Funcion que crea el documento, lo rellena y luego lo genera
       try {
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             SourceFile source2 = new SourceFile(sourceName);
             Scanner scanner2 = new Scanner(source2);
             TokenPrinter tP = new TokenPrinter(scanner2);
-            Document doc = tP.printTokensHtml();
+            Document doc = tP.printTokensHtml();   
             DOMSource dmSource = new DOMSource(doc);
             String sourceNameHtml = sourceName.replace(".tri", ".html");
             StreamResult result = new StreamResult(new File(sourceNameHtml));
@@ -60,5 +63,8 @@ public class Writer {
         }
                     
     }
+    //****************************************
+ //*        FIN DE AGREGACION DE JACOB           *
+ //****************************************
 
 }

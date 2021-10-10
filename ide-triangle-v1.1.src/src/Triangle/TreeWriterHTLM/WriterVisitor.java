@@ -95,7 +95,9 @@ public class WriterVisitor implements Visitor {
   WriterVisitor(FileWriter fileWriter) {
     this.fileWriter = fileWriter;
   }
-
+  //****************************************
+ //*        AGREGACION DE ARY           *
+ //****************************************
   // Commands
   public Object visitAssignCommand(AssignCommand ast, Object obj) {
     writeLineHTML("<AssignCommand>");
@@ -788,5 +790,7 @@ public class WriterVisitor implements Visitor {
         writeLineHTML("</IfSequencialCommand>");
         return null;
     }
-
+//****************************************
+ //*       FIN de AGREGACION DE ARY       *
+ //****************************************
 }

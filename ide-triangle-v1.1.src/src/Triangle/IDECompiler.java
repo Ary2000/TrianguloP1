@@ -66,6 +66,8 @@ public class IDECompiler {
         Parser parser = new Parser(scanner, report);
         boolean success = false;
         rootAST = parser.parseProgram();
+        //MODIFICACIONES HECHAS POR EL GRUPO DE TRABAJO para generar XML Y HTML
+        //TAMBIEN PARA QUE NO SALTEN LOS ERRORES CONTEXTUALES
         String sourceNameXml = sourceName.replace(".tri", ".xml");
         Writer writer = new Writer(sourceNameXml);
         writer.writeHtml(sourceName);
@@ -88,6 +90,7 @@ public class IDECompiler {
                 }
             }
         }
+        //FIN MODIFICACIONES
 
         if (success)
         {

@@ -19,6 +19,8 @@ public interface Visitor {
   public abstract Object visitRangeVarDecl(RangeVarDecl ast, Object o); 
 
   // Commands
+  
+  //MODIFICACIONES DE ARY-EL SE AGREGO NUEVAS FUNCIONES ABSTRACTAS
   public abstract Object visitAssignCommand(AssignCommand ast, Object o);
   public abstract Object visitCallCommand(CallCommand ast, Object o);
   public abstract Object visitEmptyCommand(EmptyCommand ast, Object o);
@@ -57,7 +59,7 @@ public interface Visitor {
   public abstract Object visitFuncDeclaration(FuncDeclaration ast, Object o);
   public abstract Object visitProcDeclaration(ProcDeclaration ast, Object o);
   public abstract Object visitSequentialDeclaration(SequentialDeclaration ast, Object o);
-  //agregacion jacob
+  //agregacion jacob //MODIFICACIONES DE jacobG SE AGREGO NUEVAS FUNCIONES ABSTRACTAS
   public abstract Object visitSequentialProcFunc(SequentialProcFunc ast, Object o);
   public abstract Object visitRecursiveDeclaration(RecursiveDeclaration ast, Object o);
   public abstract Object visitLocalDeclaration(LocalDeclaration ast, Object o);

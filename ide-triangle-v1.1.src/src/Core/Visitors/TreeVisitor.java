@@ -462,6 +462,8 @@ public class TreeVisitor implements Visitor {
     }
     // </editor-fold>
 
+    //MODIFICACIONES HECHAS POR EL GRUPO DE TRABAJO-> ARBOLES A LAS
+    // NUEVAS ALTERNATIVAS
     public Object visitRepeatCommand(RepeatForRangeCommand ast, Object o) {
         return(createTernary("RepeatForRange", ast.RVD, ast.e, ast.c)); //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -570,4 +572,5 @@ public class TreeVisitor implements Visitor {
     public Object visitIfSequencialCommand(IfSequencialCommand ast, Object o) {
         return(createTernary("IfSequencialCommand", ast.C1, ast.E, ast.C2));
     }
+    //FIN DE MODIFICACION
 }

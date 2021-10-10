@@ -825,6 +825,7 @@ public class Parser {
     //5 Observe que al usar recursive, la sintaxis de
     // Proc-Funcs obliga a declarar al menos dos procedimientos
     // y funciones como mutuamente recursivos.
+ //Proc-Func ("|" Proc-Func)+
     ProcFunc parseProcFuncs() throws SyntaxError {
       ProcFunc procFuncAST = null; // in case there's a syntactic error
       SourcePosition procFuncPos = new SourcePosition();
@@ -894,7 +895,7 @@ public class Parser {
         return procFuncAST;
       
     }
-  
+  //Declaraciones compuestas
   Declaration parseCompoundDeclaration() throws SyntaxError{
       Declaration declarationAST = null; // in case there's a syntactic error
       SourcePosition declarationPos = new SourcePosition();
@@ -925,7 +926,7 @@ public class Parser {
           }
           break;
       }
-      if(band==1){
+      if(band==1){  //Si no es Local o Recursive revisa que sea una single-declaration
           return declarationAST;
       }
       declarationAST = parseSingleDeclaration();

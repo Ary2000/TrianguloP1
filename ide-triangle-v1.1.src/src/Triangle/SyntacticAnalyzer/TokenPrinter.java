@@ -46,8 +46,12 @@ public class TokenPrinter {
       currentToken = lexicalAnalyser.scanCodeToHtml();
     }
   }
+    //****************************************
+ //*        AGREGACION DE JACOB           *
+ //****************************************
   public Document printTokensHtml(){
       try {
+          //Se crea el documento con sus componentes 
           DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
           DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
           Document doc = dBuilder.newDocument();
@@ -61,13 +65,14 @@ public class TokenPrinter {
           title.setTextContent("codigo");
           head.appendChild(title);
           html.appendChild(head);
-          
+          //Se escanea el token actual
           currentToken = lexicalAnalyser.scanCodeToHtml();
           while (currentToken.kind != Token.EOT) {
             if (currentToken.kind == Token.IDENTIFIER ||
                     currentToken.kind == Token.OPERATOR ||
                     currentToken.kind > 29){
                 //System.out.println(currentToken.spelling);
+                //Identificadores, operadores y separadores: en color negro y sin ningún resaltado
                 Element var = doc.createElement("font");
                 var.setAttribute("color","Black");      
                 var.setAttribute("size","3");
@@ -78,6 +83,7 @@ public class TokenPrinter {
             }
             else if(currentToken.kind == Token.CHARLITERAL ||
                     currentToken.kind == Token.INTLITERAL){
+                //Literales (caracteres y numerales): en color azul oscuro
                 Element var = doc.createElement("font");
                 var.setAttribute("color","Blue");      
                 var.setAttribute("size","3");
@@ -87,7 +93,7 @@ public class TokenPrinter {
                 
             }
             else if(currentToken.kind == -1){
-                //System.out.println(currentToken.spelling);
+                //Comentarios: en color verde medio.
                 Element var = doc.createElement("font");
                 var.setAttribute("color","Green");
                 var.setAttribute("size","3");
@@ -97,7 +103,7 @@ public class TokenPrinter {
                 
             }
             else if(currentToken.kind == -2){
-                //System.out.println(currentToken.spelling.length());
+                //Espacios
                 Element var = doc.createElement("font");
                 if(currentToken.spelling.length()==1){
                     var.setTextContent(" ");
@@ -117,7 +123,7 @@ public class TokenPrinter {
                 
             }
             else{
-                //System.out.println(currentToken.toString());
+                //Palabras reservadas color negro resaltado
                 Element var = doc.createElement("font");
                 Element negrita = doc.createElement("b");
                 negrita.setTextContent(currentToken.spelling);
@@ -129,15 +135,18 @@ public class TokenPrinter {
                 
             }
             //System.out.print('|');
-            currentToken = lexicalAnalyser.scanCodeToHtml();
+            currentToken = lexicalAnalyser.scanCodeToHtml(); //Sigue escaneando
           }
           body.appendChild(paragraph);
           html.appendChild(body);
-          doc.appendChild(html);
+          doc.appendChild(html);  
           return doc;
       } catch (ParserConfigurationException ex) {
           Logger.getLogger(TokenPrinter.class.getName()).log(Level.SEVERE, null, ex);
       }
       return null;
   }
+    //****************************************
+ //*        FIN DE AGREGACION DE JACOB           *
+ //****************************************
 }
