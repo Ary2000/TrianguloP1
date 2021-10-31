@@ -9,7 +9,7 @@ import Triangle.SyntacticAnalyzer.SourcePosition;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-public class RangeVarDecl extends AST {
+public class RangeVarDecl extends Declaration {
     public RangeVarDecl (Identifier iAST, Expression eAST, SourcePosition thePosition) {
         super(thePosition);
         I = iAST;

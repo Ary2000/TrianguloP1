@@ -735,6 +735,9 @@ public final class Checker implements Visitor {
       } else if (binding instanceof VarFormalParameter) {
         ast.type = ((VarFormalParameter) binding).T;
         ast.variable = true;
+      } else if (binding instanceof RangeVarDecl){
+        ast.type = ((RangeVarDecl) binding).E.type;
+        ast.variable = false;
       } else
         reporter.reportError ("\"%\" is not a const or var identifier",
                               ast.I.spelling, ast.I.position);
@@ -963,16 +966,19 @@ public final class Checker implements Visitor {
     @Override
     public Object visitRepeatForRangeCommand(RepeatForRangeCommand ast, Object o) {
         ast.RVD.visit(this, null);
-        TypeDenoter eType = (TypeDenoter) ast.e.visit(this, null);
-        if(! eType.equals(StdEnvironment.integerType))
-            reporter.reportError("Interger expression expected here", "", ast.e.position);
+        TypeDenoter e2Type = (TypeDenoter) ast.e2.visit(this, null);
+        if(! e2Type.equals(StdEnvironment.integerType))
+            reporter.reportError("Interger expression expected here", "", ast.e2.position);
+        idTable.openScope();
+        idTable.enter(ast.RVD.I.spelling, ast.RVD);
         ast.c.visit(this, null);
-        return null;//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        idTable.closeScope();
+        return null;
     }
   
-    public Object visitRepeatCommand(RepeatForRangeCommand ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    //public Object visitRepeatCommand(RepeatForRangeCommand ast, Object o) {
+    //    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    //}
 
     @Override
     public Object visitRepeatExpressionCommand(RepeatWhileDoCommand ast, Object o) {
@@ -988,39 +994,87 @@ public final class Checker implements Visitor {
 
     @Override
     public Object visitRangeVarDecl(RangeVarDecl ast, Object o) {
-        ast.E.visit(this, null);//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        ast.I.visit(this, null);
+        TypeDenoter iType = (TypeDenoter) ast.I.visit(this, null);
+        if(!iType.equals(StdEnvironment.integerType)){
+            reporter.reportError("Integer expression expecter here", "", ast.I.position);
+        }
+        TypeDenoter eType = (TypeDenoter) ast.E.visit(this, null);
+        if(!eType.equals(StdEnvironment.integerType)){
+            reporter.reportError("Integer expression expecter here", "", ast.E.position);
+        }
         return null;
     }
 
     @Override
     public Object visitRepeatUntilDoCommand(RepeatUntilDoCommand ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        TypeDenoter eType = (TypeDenoter) ast.e.visit(this, null);
+        if(!eType.equals(StdEnvironment.booleanType)){
+            reporter.reportError("Boolean expression expected here", "", ast.e.position);
+        }
+        ast.c.visit(this, null);
+        return null;
     }
 
     @Override
     public Object visitRepeatDoWhileCommand(RepeatDoWhileCommand ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ast.c.visit(this, null);
+        TypeDenoter eType = (TypeDenoter) ast.e.visit(this, null);
+        if(!eType.equals(StdEnvironment.booleanType)){
+            reporter.reportError("Boolean expression expected here", "", ast.e.position);
+        }
+        return null;
     }
 
     @Override
     public Object visitRepeatDoUntilCommand(RepeatDoUntilCommand ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ast.c.visit(this, null);
+        TypeDenoter eType = (TypeDenoter) ast.e.visit(this, null);
+        if(!eType.equals(StdEnvironment.booleanType)){
+            reporter.reportError("Boolean expression expected here", "", ast.e.position);
+        }
+        return null;
     }
 
     @Override
     public Object visitRepeatForRangeWhileCommand(RepeatForRangeWhileCommand ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ast.RVD.visit(this, null);
+        TypeDenoter E2Type = (TypeDenoter) ast.E2.visit(this, null);
+        if(! E2Type.equals(StdEnvironment.integerType))
+            reporter.reportError("Interger expression expected here", "", ast.E2.position);
+        TypeDenoter E3Type = (TypeDenoter) ast.E3.visit(this, null);
+        if(! E3Type.equals(StdEnvironment.booleanType))
+            reporter.reportError("Boolean expression expected here", "", ast.E3.position);
+        idTable.openScope();
+        idTable.enter(ast.RVD.I.spelling, ast.RVD);
+        ast.C.visit(this, null);
+        idTable.closeScope();
+        return null;    
     }
 
     @Override
     public Object visitRepeatForRangeUntilCommand(RepeatForRangeUntilCommand ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ast.RVD.visit(this, null);
+        TypeDenoter E2Type = (TypeDenoter) ast.E2.visit(this, null);
+        if(! E2Type.equals(StdEnvironment.integerType))
+            reporter.reportError("Interger expression expected here", "", ast.E2.position);
+        TypeDenoter E3Type = (TypeDenoter) ast.E3.visit(this, null);
+        if(! E3Type.equals(StdEnvironment.booleanType))
+            reporter.reportError("Boolean expression expected here", "", ast.E3.position);
+        idTable.openScope();
+        idTable.enter(ast.RVD.I.spelling, ast.RVD);
+        ast.C.visit(this, null);
+        idTable.closeScope();
+        return null;     
     }
 
     @Override
     public Object visitRepeatForInCommand(RepeatForInCommand ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ast.IVD.visit(this, null);
+        idTable.openScope();
+        idTable.enter(ast.IVD.I.spelling, ast.IVD);
+        ast.C.visit(this, null);
+        idTable.closeScope();
+        return null;
     }
 
     @Override
@@ -1050,7 +1104,12 @@ public final class Checker implements Visitor {
 
     @Override
     public Object visitInVarDecl(InVarDecl ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ast.I.visit(this, null);
+        TypeDenoter iType = (TypeDenoter) ast.E.visit(this, null);
+        //Ya hay manera sin hacer for
+        //Buscar por si acaso
+        //if(!(iType instanceof ))
+        return null;
     }
 
     @Override
@@ -1076,6 +1135,16 @@ public final class Checker implements Visitor {
     @Override
     public Object visitIfSequencialCommand(IfSequencialCommand ast, Object o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Object visitWhileDoCommand(RepeatWhileDoCommand ast, Object o) {
+        TypeDenoter eType = (TypeDenoter) ast.e.visit(this, null);
+        if(!eType.equals(StdEnvironment.booleanType)){
+            reporter.reportError("Boolean expression expected here", "", ast.e.position);
+        }
+        ast.c.visit(this, null);
+        return null;    
     }
 
 }

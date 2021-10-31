@@ -16,7 +16,7 @@ public class RepeatForRangeCommand extends Command {
     public RepeatForRangeCommand(Identifier iAST, Expression e1AST, Expression e2AST, Command cAST, SourcePosition thePosition){
         super (thePosition);
         RVD = new RangeVarDecl(iAST, e1AST, thePosition);
-        e = e2AST;
+        e2 = e2AST;
         c = cAST;
     }
     
@@ -28,12 +28,11 @@ public class RepeatForRangeCommand extends Command {
     public Element conseguirNodes(Document doc) {
         Element rootElement = doc.createElement("RepeatForRangeCommand");
         rootElement.appendChild(RVD.conseguirNodes(doc));
-        rootElement.appendChild(e.conseguirNodes(doc));
         rootElement.appendChild(c.conseguirNodes(doc));
         return rootElement;
     }
    
    public RangeVarDecl RVD;
-   public Expression e;
+   public Expression e2;
    public Command c;
 }

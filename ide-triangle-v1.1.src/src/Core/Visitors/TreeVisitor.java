@@ -465,7 +465,7 @@ public class TreeVisitor implements Visitor {
     //MODIFICACIONES HECHAS POR EL GRUPO DE TRABAJO-> ARBOLES A LAS
     // NUEVAS ALTERNATIVAS
     public Object visitRepeatCommand(RepeatForRangeCommand ast, Object o) {
-        return(createTernary("RepeatForRange", ast.RVD, ast.e, ast.c)); //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return(createTernary("RepeatForRange", ast.RVD, ast.e2, ast.c)); //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -475,7 +475,7 @@ public class TreeVisitor implements Visitor {
 
     @Override
     public Object visitRepeatForRangeCommand(RepeatForRangeCommand ast, Object o) {
-        return(createTernary("RepeatForRange", ast.RVD, ast.e, ast.c)); //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return(createTernary("RepeatForRange", ast.RVD, ast.e2, ast.c)); //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -573,4 +573,9 @@ public class TreeVisitor implements Visitor {
         return(createTernary("IfSequencialCommand", ast.C1, ast.E, ast.C2));
     }
     //FIN DE MODIFICACION
+
+    @Override
+    public Object visitWhileDoCommand(RepeatWhileDoCommand ast, Object o) {
+        return(createBinary("RepeatWhileCommand", ast.e, ast.c));
+    }
 }

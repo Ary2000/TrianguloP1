@@ -20,7 +20,7 @@ public class RepeatWhileDoCommand extends Command {
     }
     
     public Object visit(Visitor v, Object o) {
-    return v.visitRepeatExpressionCommand(this, o);
+    return v.visitWhileDoCommand(this, o);
   }
     
     @Override

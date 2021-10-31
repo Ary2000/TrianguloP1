@@ -7,9 +7,6 @@
 <IntegerLiteral value="5"/>
 </IntegerExpression>
 </RangeVarDecl>
-<IntegerExpression>
-<IntegerLiteral value="6"/>
-</IntegerExpression>
 <EmptyCommand/>
 </RepeatForRangeCommand>
 </Program>

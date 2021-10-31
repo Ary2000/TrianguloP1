@@ -140,6 +140,8 @@ public interface Visitor {
 
     public abstract Object visitIfSequencialCommand(IfSequencialCommand ast, Object o);
 
+    public Object visitWhileDoCommand(RepeatWhileDoCommand ast, Object o);
+
 
 
 }

@@ -9,7 +9,7 @@ import Triangle.SyntacticAnalyzer.SourcePosition;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-public class InVarDecl extends AST{
+public class InVarDecl extends Declaration {
     public InVarDecl(Identifier iAST, Expression eAST, SourcePosition thePosition){
         super(thePosition);
         I = iAST;

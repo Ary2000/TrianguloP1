@@ -648,7 +648,7 @@ public class WriterVisitor implements Visitor {
     public Object visitRepeatForRangeCommand(RepeatForRangeCommand ast, Object o) {
         writeLineHTML("<RepeatForRangeCommand>");
         ast.RVD.visit(this, null);
-        ast.e.visit(this, null);
+        //ast.e.visit(this, null);
         ast.c.visit(this, null);
         writeLineHTML("</RepeatForRangeCommand>");
         return null;
@@ -793,4 +793,13 @@ public class WriterVisitor implements Visitor {
 //****************************************
  //*       FIN de AGREGACION DE ARY       *
  //****************************************
+
+    @Override
+    public Object visitWhileDoCommand(RepeatWhileDoCommand ast, Object o) {
+        writeLineHTML("<RepeatWhileDoCommand>");
+        ast.e.visit(this, null);
+        ast.c.visit(this, null);
+        writeLineHTML("</RepeatCommand>");
+        return null;
+    }
 }
