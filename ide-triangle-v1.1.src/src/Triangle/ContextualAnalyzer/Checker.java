@@ -1104,11 +1104,12 @@ public final class Checker implements Visitor {
 
     @Override
     public Object visitInVarDecl(InVarDecl ast, Object o) {
-        ast.I.visit(this, null);
-        TypeDenoter iType = (TypeDenoter) ast.E.visit(this, null);
-        //Ya hay manera sin hacer for
-        //Buscar por si acaso
-        //if(!(iType instanceof ))
+        TypeDenoter iType = (TypeDenoter) ast.I.visit(this, null);
+        TypeDenoter eType = (TypeDenoter) ast.E.visit(this, null);
+        if(! iType.equals(StdEnvironment.integerType))
+            reporter.reportError("Interger expression expected here", "", ast.I.position);
+        if (! (eType instanceof ArrayTypeDenoter))
+            reporter.reportError("array expected here", "", ast.E.position);
         return null;
     }
 
