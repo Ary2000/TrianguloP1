@@ -729,6 +729,9 @@ public final class Checker implements Visitor {
       } else if (binding instanceof VarDeclaration) {
         ast.type = ((VarDeclaration) binding).T;
         ast.variable = true;
+      } else if (binding instanceof VarInitDeclaration) {
+        ast.type = ((VarInitDeclaration) binding).T;
+        ast.variable = true;
       } else if (binding instanceof ConstFormalParameter) {
         ast.type = ((ConstFormalParameter) binding).T;
         ast.variable = false;
@@ -737,6 +740,9 @@ public final class Checker implements Visitor {
         ast.variable = true;
       } else if (binding instanceof RangeVarDecl){
         ast.type = ((RangeVarDecl) binding).E.type;
+        ast.variable = false;
+      } else if (binding instanceof InVarDecl){
+        ast.type = ((InVarDecl) binding).E.type;
         ast.variable = false;
       } else
         reporter.reportError ("\"%\" is not a const or var identifier",
@@ -994,10 +1000,6 @@ public final class Checker implements Visitor {
 
     @Override
     public Object visitRangeVarDecl(RangeVarDecl ast, Object o) {
-        TypeDenoter iType = (TypeDenoter) ast.I.visit(this, null);
-        if(!iType.equals(StdEnvironment.integerType)){
-            reporter.reportError("Integer expression expecter here", "", ast.I.position);
-        }
         TypeDenoter eType = (TypeDenoter) ast.E.visit(this, null);
         if(!eType.equals(StdEnvironment.integerType)){
             reporter.reportError("Integer expression expecter here", "", ast.E.position);
@@ -1104,11 +1106,8 @@ public final class Checker implements Visitor {
 
     @Override
     public Object visitInVarDecl(InVarDecl ast, Object o) {
-        TypeDenoter iType = (TypeDenoter) ast.I.visit(this, null);
         TypeDenoter eType = (TypeDenoter) ast.E.visit(this, null);
-        if(! iType.equals(StdEnvironment.integerType))
-            reporter.reportError("Interger expression expected here", "", ast.I.position);
-        if (! (eType instanceof ArrayTypeDenoter))
+        if (!(eType instanceof ArrayTypeDenoter))
             reporter.reportError("array expected here", "", ast.E.position);
         return null;
     }
@@ -1130,7 +1129,11 @@ public final class Checker implements Visitor {
 
     @Override
     public Object visitVarInitDeclaration(VarInitDeclaration ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ast.T = (TypeDenoter) ast.E.visit(this, null);
+        idTable.enter(ast.I.spelling, ast);
+        if (ast.duplicated)
+            reporter.reportError("idetifier \"%\" already declared", ast.I.spelling, ast.position);
+        return null;
     }
 
     @Override

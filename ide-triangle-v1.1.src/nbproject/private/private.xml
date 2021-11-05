@@ -7,7 +7,7 @@
             <file>file:/C:/Users/Ary/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/AbstractSyntaxTrees/AST.java</file>
             <file>file:/C:/Users/Ary/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/IDECompiler.java</file>
             <file>file:/C:/Users/Ary/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/AbstractSyntaxTrees/InVarDecl.java</file>
-            <file>file:/C:/Users/Ary/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/AbstractSyntaxTrees/RepeatForRangeWhileCommand.java</file>
+            <file>file:/C:/Users/Ary/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/SyntacticAnalyzer/Parser.java</file>
             <file>file:/C:/Users/Ary/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/ContextualAnalyzer/Checker.java</file>
             <file>file:/C:/Users/Ary/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/AbstractSyntaxTrees/Visitor.java</file>
         </group>
