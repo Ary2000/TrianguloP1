@@ -729,7 +729,13 @@ public final class Checker implements Visitor {
       } else if (binding instanceof VarDeclaration) {
         ast.type = ((VarDeclaration) binding).T;
         ast.variable = true;
-      } else if (binding instanceof ConstFormalParameter) {
+        //AGREGADO JACOB
+      } /*else if (binding instanceof LocalDeclaration) {
+        ast.type = ((LocalDeclaration) binding).T;
+        ast.variable = true;
+        //AGREGADO JACOB} 
+        */
+       else if (binding instanceof ConstFormalParameter) {
         ast.type = ((ConstFormalParameter) binding).T;
         ast.variable = false;
       } else if (binding instanceof VarFormalParameter) {
@@ -1124,7 +1130,11 @@ public final class Checker implements Visitor {
 
     @Override
     public Object visitLocalDeclaration(LocalDeclaration ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ast.T = (TypeDenoter) ast.D2.visit(this, null);
+        idTable.openScope();
+        ast.D1.visit(this, null);
+        idTable.closeScope();
+        return null;
     }
 
     @Override
