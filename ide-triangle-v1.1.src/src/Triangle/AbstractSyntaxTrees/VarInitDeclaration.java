@@ -17,6 +17,7 @@ public class VarInitDeclaration extends Declaration{
         super(thePosition);
         I = iAST;
         E = eAST;
+        T = null;
     }
 
     @Override
@@ -26,5 +27,6 @@ public class VarInitDeclaration extends Declaration{
     }
     public Identifier I;
     public Expression E;
+    public TypeDenoter T;
     
 }
