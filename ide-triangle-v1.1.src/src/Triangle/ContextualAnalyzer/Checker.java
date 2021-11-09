@@ -1125,7 +1125,11 @@ public final class Checker implements Visitor {
 
     @Override
     public Object visitLocalDeclaration(LocalDeclaration ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ast.T = (TypeDenoter) ast.D2.visit(this, null);
+        idTable.openScope();
+        ast.D1.visit(this, null);
+        idTable.closeScope();
+        return null;
     }
 
     @Override

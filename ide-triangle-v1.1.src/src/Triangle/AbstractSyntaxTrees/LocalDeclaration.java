@@ -24,4 +24,5 @@ public class LocalDeclaration extends Declaration{
         return v.visitLocalDeclaration(this, o);
     }
     public Declaration D1,D2;
+    public TypeDenoter T;
 }

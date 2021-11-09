@@ -4,13 +4,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Ary/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/AbstractSyntaxTrees/ConstFormalParameter.java</file>
-            <file>file:/C:/Users/Ary/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/AbstractSyntaxTrees/RepeatForInCommand.java</file>
-            <file>file:/C:/Users/Ary/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/AbstractSyntaxTrees/TypeDenoter.java</file>
-            <file>file:/C:/Users/Ary/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/AbstractSyntaxTrees/InVarDecl.java</file>
-            <file>file:/C:/Users/Ary/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/AbstractSyntaxTrees/SimpleVname.java</file>
-            <file>file:/C:/Users/Ary/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/ContextualAnalyzer/Checker.java</file>
-            <file>file:/C:/Users/Ary/Documents/GitHub/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/AbstractSyntaxTrees/ArrayTypeDenoter.java</file>
+            <file>file:/C:/Users/yeico/Desktop/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/ContextualAnalyzer/IdentificationTable.java</file>
+            <file>file:/C:/Users/yeico/Desktop/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/AbstractSyntaxTrees/RepeatForRangeCommand.java</file>
+            <file>file:/C:/Users/yeico/Desktop/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/AbstractSyntaxTrees/LocalDeclaration.java</file>
+            <file>file:/C:/Users/yeico/Desktop/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/AbstractSyntaxTrees/Declaration.java</file>
+            <file>file:/C:/Users/yeico/Desktop/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/AbstractSyntaxTrees/VarDeclaration.java</file>
+            <file>file:/C:/Users/yeico/Desktop/TrianguloP1/ide-triangle-v1.1.src/src/Triangle/ContextualAnalyzer/Checker.java</file>
         </group>
     </open-files>
 </project-private>
