@@ -742,7 +742,8 @@ public final class Checker implements Visitor {
         ast.type = ((RangeVarDecl) binding).E.type;
         ast.variable = false;
       } else if (binding instanceof InVarDecl){
-        ast.type = ((InVarDecl) binding).E.type;
+        ArrayTypeDenoter arreglo = (ArrayTypeDenoter)((InVarDecl) binding).E.type;
+        ast.type = arreglo.T;
         ast.variable = false;
       } else
         reporter.reportError ("\"%\" is not a const or var identifier",
@@ -1138,9 +1139,15 @@ public final class Checker implements Visitor {
 
     @Override
     public Object visitIfSequencialCommand(IfSequencialCommand ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        TypeDenoter eType = (TypeDenoter) ast.E.visit(this, null);
+        if(!eType.equals(StdEnvironment.booleanType))
+            reporter.reportError("Boolean expression expected here", "", ast.E.position);
+        ast.C1.visit(this, null);
+        ast.C2.visit(this, null);
+        return null;
     }
 
+    //RepeatWhileDoCommand
     @Override
     public Object visitWhileDoCommand(RepeatWhileDoCommand ast, Object o) {
         TypeDenoter eType = (TypeDenoter) ast.e.visit(this, null);
@@ -1149,6 +1156,11 @@ public final class Checker implements Visitor {
         }
         ast.c.visit(this, null);
         return null;    
+    }
+
+    @Override
+    public Object visitRepeatWhileDoCommand(RepeatWhileDoCommand aThis, Object o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

@@ -802,4 +802,9 @@ public class WriterVisitor implements Visitor {
         writeLineHTML("</RepeatCommand>");
         return null;
     }
+
+    @Override
+    public Object visitRepeatWhileDoCommand(RepeatWhileDoCommand aThis, Object o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
