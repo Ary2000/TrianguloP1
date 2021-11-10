@@ -1044,11 +1044,11 @@ public final class Checker implements Visitor {
         TypeDenoter E2Type = (TypeDenoter) ast.E2.visit(this, null);
         if(! E2Type.equals(StdEnvironment.integerType))
             reporter.reportError("Interger expression expected here", "", ast.E2.position);
+        idTable.openScope();
+        idTable.enter(ast.RVD.I.spelling, ast.RVD);
         TypeDenoter E3Type = (TypeDenoter) ast.E3.visit(this, null);
         if(! E3Type.equals(StdEnvironment.booleanType))
             reporter.reportError("Boolean expression expected here", "", ast.E3.position);
-        idTable.openScope();
-        idTable.enter(ast.RVD.I.spelling, ast.RVD);
         ast.C.visit(this, null);
         idTable.closeScope();
         return null;    
@@ -1060,11 +1060,11 @@ public final class Checker implements Visitor {
         TypeDenoter E2Type = (TypeDenoter) ast.E2.visit(this, null);
         if(! E2Type.equals(StdEnvironment.integerType))
             reporter.reportError("Interger expression expected here", "", ast.E2.position);
+        idTable.openScope();
+        idTable.enter(ast.RVD.I.spelling, ast.RVD);
         TypeDenoter E3Type = (TypeDenoter) ast.E3.visit(this, null);
         if(! E3Type.equals(StdEnvironment.booleanType))
             reporter.reportError("Boolean expression expected here", "", ast.E3.position);
-        idTable.openScope();
-        idTable.enter(ast.RVD.I.spelling, ast.RVD);
         ast.C.visit(this, null);
         idTable.closeScope();
         return null;     
