@@ -578,4 +578,9 @@ public class TreeVisitor implements Visitor {
     public Object visitWhileDoCommand(RepeatWhileDoCommand ast, Object o) {
         return(createBinary("RepeatWhileCommand", ast.e, ast.c));
     }
+
+    @Override
+    public Object visitRepeatWhileDoCommand(RepeatWhileDoCommand aThis, Object o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

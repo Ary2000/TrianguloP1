@@ -142,6 +142,8 @@ public interface Visitor {
 
     public Object visitWhileDoCommand(RepeatWhileDoCommand ast, Object o);
 
+    public Object visitRepeatWhileDoCommand(RepeatWhileDoCommand aThis, Object o);
+
 
 
 }
