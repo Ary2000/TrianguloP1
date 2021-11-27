@@ -111,7 +111,7 @@ import Triangle.SyntacticAnalyzer.SourcePosition;
 public final class Checker implements Visitor {
 
   // Commands
-
+  int band = 0;
   // Always returns null. Does not use the given object.
 
   public Object visitAssignCommand(AssignCommand ast, Object o) {
@@ -318,7 +318,41 @@ public final class Checker implements Visitor {
   }
 
   public Object visitFuncDeclaration(FuncDeclaration ast, Object o) {
-    ast.T = (TypeDenoter) ast.T.visit(this, null);
+      //MiniPasada 1
+    if(band==0){
+        ast.T = (TypeDenoter) ast.T.visit(this, null); 
+        idTable.enter (ast.I.spelling, ast); // permits recursion
+        if (ast.duplicated)
+            reporter.reportError ("identifier \"%\" already declared",
+                                         ast.I.spelling, ast.position); 
+        idTable.openScope(); 
+        ast.FPS.visit(this, null); 
+        //TypeDenoter eType = (TypeDenoter) ast.E.visit(this, null); 
+        idTable.closeScope(); 
+       // if (! ast.T.equals(eType)) 
+         //   reporter.reportError ("body of function \"%\" has wrong type", ast.I.spelling, ast.E.position);
+        return null; 
+    }
+    //MiniPasada 2
+    else{
+        ast.T = (TypeDenoter) ast.T.visit(this, null); 
+        //idTable.enter (ast.I.spelling, ast); // permits recursion 
+        /*if (ast.duplicated) 
+            reporter.reportError ("identifier \"%\" already declared", 
+                                    ast.I.spelling, ast.position);*/
+        idTable.openScope();
+        ast.FPS.visit(this, null);
+        TypeDenoter eType = (TypeDenoter) ast.E.visit(this, null);
+        idTable.closeScope();
+        if (! ast.T.equals(eType))
+            reporter.reportError ("body of function \"%\" has wrong type",
+                                    ast.I.spelling, ast.E.position);
+        return null;
+        
+    }
+    //SE DEJA ESTE CODIGO "EL ORIGINAL" POR SI ACASO SE NECESITA EN UN FUTURO
+    //Si se ocupara el código entonces, CREAR 3 BANDERAS: CODIGO ORGINAL, REC1 Y REC2 
+    /*ast.T = (TypeDenoter) ast.T.visit(this, null);
     idTable.enter (ast.I.spelling, ast); // permits recursion
     if (ast.duplicated)
       reporter.reportError ("identifier \"%\" already declared",
@@ -330,10 +364,39 @@ public final class Checker implements Visitor {
     if (! ast.T.equals(eType))
       reporter.reportError ("body of function \"%\" has wrong type",
                             ast.I.spelling, ast.E.position);
-    return null;
+    return null;*/
   }
 
   public Object visitProcDeclaration(ProcDeclaration ast, Object o) {
+    //MiniPasada 1
+    if(band==0){
+        idTable.enter (ast.I.spelling, ast); // permits recursion
+        if (ast.duplicated)
+            reporter.reportError ("identifier \"%\" already declared",
+                                    ast.I.spelling, ast.position); 
+        idTable.openScope(); 
+        ast.FPS.visit(this, null); 
+        //ast.C.visit(this, null); 
+        idTable.closeScope();
+        return null;
+        
+    }
+    //MiniPasada 2
+    else{
+        //idTable.enter (ast.I.spelling, ast); // permits recursion 
+        /*if (ast.duplicated) 
+            reporter.reportError ("identifier \"%\" already declared", 
+                    ast.I.spelling, ast.position);*/
+        idTable.openScope();
+        ast.FPS.visit(this, null);
+        ast.C.visit(this, null);
+        idTable.closeScope();
+        return null;
+        
+    }
+    //SE DEJA ESTE CODIGO "EL ORIGINAL" POR SI ACASO SE NECESITA EN UN FUTURO
+    //Si se ocupara el código entonces, CREAR 3 BANDERAS: CODIGO ORGINAL, REC1 Y REC2 
+    /*
     idTable.enter (ast.I.spelling, ast); // permits recursion
     if (ast.duplicated)
       reporter.reportError ("identifier \"%\" already declared",
@@ -342,9 +405,8 @@ public final class Checker implements Visitor {
     ast.FPS.visit(this, null);
     ast.C.visit(this, null);
     idTable.closeScope();
-    return null;
+    return null;*/
   }
-
   public Object visitSequentialDeclaration(SequentialDeclaration ast, Object o) {
     ast.D1.visit(this, null);
     ast.D2.visit(this, null);
@@ -1112,23 +1174,29 @@ public final class Checker implements Visitor {
             reporter.reportError("array expected here", "", ast.E.position);
         return null;
     }
-
     @Override
     public Object visitSequentialProcFunc(SequentialProcFunc ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ast.PF1.visit(this, null);
+        ast.PF2.visit(this, null);
+        return null;
     }
 
     @Override
     public Object visitRecursiveDeclaration(RecursiveDeclaration ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        band = 0;
+        ast.T = (TypeDenoter) ast.P.visit(this, null);
+        band = 1;
+        ast.T = (TypeDenoter) ast.P.visit(this, null);
+        return null;
     }
 
     @Override
     public Object visitLocalDeclaration(LocalDeclaration ast, Object o) {
-        ast.T = (TypeDenoter) ast.D2.visit(this, null);
-        idTable.openScope();
+        idTable.beginLocal(); //openPrivate
         ast.D1.visit(this, null);
-        idTable.closeScope();
+        idTable.beginIn();   //openPublic
+        ast.D2.visit(this, null);
+        idTable.endLocal();  //close private
         return null;
     }
 

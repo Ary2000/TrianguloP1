@@ -23,5 +23,6 @@ public class RecursiveDeclaration extends Declaration{
         return v.visitRecursiveDeclaration(this, o);
     }
     public ProcFunc P;
+    public TypeDenoter T;
     
 }
