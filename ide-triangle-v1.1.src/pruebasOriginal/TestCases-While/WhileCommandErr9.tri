@@ -1,0 +1,9 @@
+! Test of while command, doesn't run correctly.
+
+while
+    let                 ! this is a Let-Command in a while expression
+        var i : Integer
+    in 
+        i := 2
+do
+    putint(1)

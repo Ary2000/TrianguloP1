@@ -1,0 +1,7 @@
+! Test of while command, it runs correctly
+let
+   var a: array 5 of Integer
+in
+  while a[2] > 5
+  do 
+    putint(a[2])

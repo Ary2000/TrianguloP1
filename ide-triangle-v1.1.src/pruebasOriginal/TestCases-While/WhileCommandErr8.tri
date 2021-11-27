@@ -1,0 +1,8 @@
+! Test of while command, doesn't run correctly.
+
+while
+    if (a=1)           ! this is an If-Command in a while expression
+    then putint(a)              
+    else a := 1 
+do
+    putint(1)

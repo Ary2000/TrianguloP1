@@ -1,0 +1,3 @@
+! Test of while command, it runs correctly
+
+while 1=1 do puteol()

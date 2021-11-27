@@ -1,0 +1,10 @@
+! Test of while command, doesn't run correctly.
+
+loop ! loop will be read as a V-name, it should be followed by := and not by a command
+
+  while true do
+
+    putint (1) 
+
+end
+

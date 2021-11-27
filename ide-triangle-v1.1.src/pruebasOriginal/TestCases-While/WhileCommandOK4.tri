@@ -1,0 +1,18 @@
+! Test of while-command, it runs correctly
+
+let
+   var i: Integer;
+   var n: Integer;
+   var x: Integer
+in
+  begin
+    getint(var i);
+    getint(var n);
+    x := 1;
+    while (n > 0) do
+      begin
+        x:= x*i;
+        n := n - 1
+      end;
+    putint(x);
+  end

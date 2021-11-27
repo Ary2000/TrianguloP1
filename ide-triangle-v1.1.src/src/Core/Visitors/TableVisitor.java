@@ -316,7 +316,7 @@ public class TableVisitor implements Visitor {
       return(null);
   }
   
-  public Object visitVarDeclaration(VarDeclaration ast, Object o) {      
+  public Object visitVarDeclaration(VarDeclaration ast, Object o) {    
       try {
       addIdentifier(ast.I.spelling, 
               "KnownAddress", 
@@ -645,122 +645,186 @@ public class TableVisitor implements Visitor {
     // </editor-fold>
 
     public Object visitRepeatCommand(RepeatForRangeCommand ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ast.RVD.visit(this, null);
+        ast.e2.visit(this, null);
+        ast.c.visit(this, null);
+        return(null);
     }
 
     @Override
     public Object visitRepeatExpressionCommand(RepeatWhileDoCommand ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ast.e.visit(this, null);
+        ast.c.visit(this,null);
+        return(null);
     }
 
     @Override
     public Object visitRepeatForRangeCommand(RepeatForRangeCommand ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ast.RVD.visit(this, null);
+        ast.e2.visit(this, null);
+        ast.c.visit(this, null);
+        return(null);
     }
 
     @Override
     public Object visitRepeatInCommand(RepeatInCommand ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ast.i.visit(this, null);
+        ast.e.visit(this, null);
+        ast.c.visit(this, null);
+        return(null);
     }
 
     @Override
     public Object visitRangeVarDecl(RangeVarDecl ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ast.I.visit(this, null);
+        ast.E.visit(this, null);
+        return(null);
     }
     
     @Override
     public Object visitSequentialProcFunc(SequentialProcFunc ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ast.PF1.visit(this, null);
+        ast.PF2.visit(this, null);
+        return(null);
     }
 
     @Override
     public Object visitRepeatUntilDoCommand(RepeatUntilDoCommand ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ast.e.visit(this, null);
+        ast.c.visit(this, null);
+        return(null);
     }
       
     @Override
     public Object visitRecursiveDeclaration(RecursiveDeclaration ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ast.P.visit(this, null);
+        return(null);
     }
 
     @Override
     public Object visitRepeatDoWhileCommand(RepeatDoWhileCommand ast, Object o) {
-      throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ast.e.visit(this, null);
+        ast.c.visit(this, null);
+        return(null);
     }
       
     @Override
     public Object visitLocalDeclaration(LocalDeclaration ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ast.T.visit(this, null);
+        ast.D1.visit(this, null);
+        ast.D2.visit(this, null);
+        return(null);
     }
 
     @Override
     public Object visitRepeatDoUntilCommand(RepeatDoUntilCommand ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ast.e.visit(this, null);
+        ast.c.visit(this, null);
+        return(null);
     }
 
     @Override
     public Object visitRepeatForRangeWhileCommand(RepeatForRangeWhileCommand ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ast.RVD.visit(this, null);
+        ast.E2.visit(this, null);
+        ast.E3.visit(this, null);
+        ast.C.visit(this, null);
+        return(null);
     }
 
     @Override
     public Object visitRepeatForRangeUntilCommand(RepeatForRangeUntilCommand ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ast.RVD.visit(this, null);
+        ast.E2.visit(this, null);
+        ast.E3.visit(this, null);
+        ast.C.visit(this, null);
+        return(null);
     }
 
     @Override
     public Object visitRepeatForInCommand(RepeatForInCommand ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ast.IVD.visit(this, null);
+        ast.C.visit(this, null);
+        return(null);
     }
 
 
     public Object visitWhenCaseLiteral(WhenCaseLiteral aThis, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        aThis.cl.visit(this, null);
+        aThis.c.visit(this, null);
+        return(null);
     }
 
     @Override
     public Object visitWhenCaseRange(WhenCaseRange aThis, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        aThis.cl1.visit(this, null);
+        aThis.cl2.visit(this, null);
+        aThis.c.visit(this, null);
+        return(null);
     }
 
     @Override
     public Object visitCaseLiteralInt(CaseLiteralInt aThis, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        aThis.il.visit(this, null);
+        return(null);
     }
 
     @Override
     public Object visitCaseLiteralChar(CaseLiteralChar aThis, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        aThis.chr.visit(this, null);
+        return(null);
     }
 
     @Override
     public Object visitElseCaseCom(ElseCaseCom aThis, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        aThis.c.visit(this, null);
+        return(null);
     }
 
     @Override
     public Object visitInVarDecl(InVarDecl ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ast.E.visit(this, null);
+        ast.I.visit(this, null);
+        //ast.T.visit(this, null);
+        return(null);
     }
     
     @Override
     public Object visitVarInitDeclaration(VarInitDeclaration ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ast.E.visit(this, null);
+        try {
+              addIdentifier(ast.I.spelling, 
+              "KnownAddress", 
+              (ast.entity!=null?ast.entity.size:0), 
+              ((KnownAddress)ast.entity).address.level, 
+              ((KnownAddress)ast.entity).address.displacement, 
+              -1);
+      } catch (NullPointerException e) { }
+      
+      ast.T.visit(this, null);
+      return(null);
     }
 
     @Override
     public Object visitIfSequencialCommand(IfSequencialCommand ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ast.E.visit(this, null);
+        ast.C1.visit(this, null);
+        ast.C2.visit(this, null);
+        return(null);
     }
 
     @Override
     public Object visitWhileDoCommand(RepeatWhileDoCommand ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ast.e.visit(this, null);
+        ast.c.visit(this, null);
+        return(null);
     }
 
     @Override
     public Object visitRepeatWhileDoCommand(RepeatWhileDoCommand aThis, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        aThis.e.visit(this, null);
+        aThis.c.visit(this, null);
+        return(null);
     }
 
 }

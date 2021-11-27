@@ -1,0 +1,6 @@
+! Test of while command, doesn't run correctly.
+
+while true do
+    if (a=1)           ! this is an If-Expression 
+    then a             ! while needs a single-command
+    else 0
