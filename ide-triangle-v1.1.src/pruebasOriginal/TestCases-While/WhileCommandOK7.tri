@@ -1,0 +1,9 @@
+! Test of while command, it runs correctly
+
+while true do
+    if (a=1)            ! this is an If-Command
+    then putint(a)              
+    else a := 1 
+
+! OK lexical and syntactic analysis
+! Contextual Error, a is not declared

@@ -1,0 +1,7 @@
+! Test of while command, doesn't run correctly.
+
+while do ! Missing expression
+  
+  putint (1) 
+
+

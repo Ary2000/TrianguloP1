@@ -1,0 +1,8 @@
+! Test of while command, it runs correctly
+
+while true do
+   begin
+      putint(5)
+   end
+
+

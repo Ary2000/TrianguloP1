@@ -1,0 +1,5 @@
+! Test of while command, it runs correctly.
+
+while true do
+    putint(1);
+    puteol() ! while is single-command, this command is not part of while

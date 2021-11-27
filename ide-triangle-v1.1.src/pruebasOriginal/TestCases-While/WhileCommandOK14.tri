@@ -1,0 +1,11 @@
+! Test of while command, it runs correctly
+let
+   type Fecha ~ 
+      record
+        d: Integer,
+        m: Integer,
+        a: Integer
+      end;
+   var a: Fecha
+in
+    while a.m < 2 do putint(a.m)

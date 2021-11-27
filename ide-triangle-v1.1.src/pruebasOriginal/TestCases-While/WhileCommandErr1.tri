@@ -1,0 +1,7 @@
+! Test of while command, doesn't run correctly.
+
+let
+   var x: Integer 
+in
+   while (x := 10) do ! not an expression, it's a single-command
+      putint(x)

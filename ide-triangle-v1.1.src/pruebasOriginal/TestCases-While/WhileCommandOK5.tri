@@ -1,0 +1,11 @@
+! Test of while command, it runs correctly
+
+let 
+    var a : Integer
+in
+    begin
+        a := 4; 
+        while a < 5 do ! empty command
+    end
+
+!OK

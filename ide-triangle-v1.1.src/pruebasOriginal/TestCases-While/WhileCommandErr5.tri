@@ -1,0 +1,5 @@
+! Test of while command, doesn't run correctly.
+
+while true do
+    1+1 ! it's not a single-command
+

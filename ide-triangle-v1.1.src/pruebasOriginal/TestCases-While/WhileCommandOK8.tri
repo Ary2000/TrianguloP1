@@ -1,0 +1,11 @@
+! Test of while command, it runs correctly.
+
+while 
+    if (a>1)           ! this is an If-Expression 
+    then a > 1
+    else a < 1
+do
+    putint(1)
+
+! OK lexical and syntactic analysis
+! Contextual Error, a is not declared

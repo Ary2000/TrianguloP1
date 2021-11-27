@@ -1,0 +1,8 @@
+! Test of while command, it runs correctly
+
+while 'a' do ! Contextual error, should be a boolean expression
+  
+  putint (1) 
+
+! OK lexical and syntactic analysis
+! Contextual Error
