@@ -138,10 +138,10 @@ public final class Encoder implements Visitor {
     Frame frame = (Frame) o;
     int jumpifAddr, jumpAddr;
 
+    ast.C1.visit(this, frame);
     Integer valSize = (Integer) ast.E.visit(this, frame);
     jumpifAddr = nextInstrAddr;
     emit(Machine.JUMPIFop, Machine.falseRep, Machine.CBr, 0);
-    ast.C1.visit(this, frame);
     jumpAddr = nextInstrAddr;
     emit(Machine.JUMPop, 0, Machine.CBr, 0);
     patch(jumpifAddr, nextInstrAddr);
@@ -1129,27 +1129,84 @@ public final class Encoder implements Visitor {
 
     @Override
     public Object visitRepeatForRangeWhileCommand(RepeatForRangeWhileCommand ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int jumpAddr, loopAddr, jump2Addr; 
+        
+        Frame frame = (Frame) o;
+        int extraSize1 = ((Integer) ast.E2.visit(this, frame)).intValue();
+        Frame frame1 = new Frame(frame, extraSize1);
+        int extraSize2 = (Integer) ast.RVD.visit(this, frame1);
+        Frame frame2 = new Frame(frame1, extraSize2);
+        jumpAddr = nextInstrAddr;
+        emit(Machine.JUMPop, 0, Machine.CBr, 0);
+        loopAddr = nextInstrAddr;
+        //emit(Machine.LOADop, 1, Machine.SBr, Machine.integerSize);
+        int extraSize3 = ((Integer) ast.E3.visit(this, frame2));
+        Frame frame3 = new Frame(frame2, extraSize3);
+        jump2Addr = nextInstrAddr;
+        emit(Machine.JUMPIFop, Machine.falseRep, Machine.CBr, jump2Addr);
+        ast.C.visit(this, frame2);
+        //emit(Machine.CALLop, 0, Machine.SBr, Machine.geDisplacement);
+        emit(Machine.CALLop, Machine.SBr, Machine.PBr, Machine.succDisplacement);
+        patch(jumpAddr, nextInstrAddr);
+        // LOAD
+        emit(Machine.LOADop, 2, Machine.STr, -(Machine.integerSize * 2));
+        emit(Machine.CALLop, Machine.SBr, Machine.PBr, Machine.geDisplacement);
+        emit(Machine.JUMPIFop, Machine.trueRep, Machine.CBr, loopAddr);
+        patch(jump2Addr, nextInstrAddr);
+        emit(Machine.POPop, 0, 0, Machine.integerSize * 2);
+        return null;
     }
 
     @Override
     public Object visitRepeatForRangeUntilCommand(RepeatForRangeUntilCommand ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int jumpAddr, loopAddr, jump2Addr; 
+        
+        Frame frame = (Frame) o;
+        int extraSize1 = ((Integer) ast.E2.visit(this, frame)).intValue();
+        Frame frame1 = new Frame(frame, extraSize1);
+        int extraSize2 = (Integer) ast.RVD.visit(this, frame1);
+        Frame frame2 = new Frame(frame1, extraSize2);
+        jumpAddr = nextInstrAddr;
+        emit(Machine.JUMPop, 0, Machine.CBr, 0);
+        loopAddr = nextInstrAddr;
+        //emit(Machine.LOADop, 1, Machine.SBr, Machine.integerSize);
+        int extraSize3 = ((Integer) ast.E3.visit(this, frame2));
+        Frame frame3 = new Frame(frame2, extraSize3);
+        jump2Addr = nextInstrAddr;
+        emit(Machine.JUMPIFop, Machine.trueRep, Machine.CBr, jump2Addr);
+        ast.C.visit(this, frame2);
+        //emit(Machine.CALLop, 0, Machine.SBr, Machine.geDisplacement);
+        emit(Machine.CALLop, Machine.SBr, Machine.PBr, Machine.succDisplacement);
+        patch(jumpAddr, nextInstrAddr);
+        // LOAD
+        emit(Machine.LOADop, 2, Machine.STr, -(Machine.integerSize * 2));
+        emit(Machine.CALLop, Machine.SBr, Machine.PBr, Machine.geDisplacement);
+        emit(Machine.JUMPIFop, Machine.trueRep, Machine.CBr, loopAddr);
+        patch(jump2Addr, nextInstrAddr);
+        emit(Machine.POPop, 0, 0, Machine.integerSize * 2);
+        return null;
     }
 
     @Override
     public Object visitRepeatForInCommand(RepeatForInCommand ast, Object o) {
         Frame frame = (Frame) o;
         RuntimeEntity baseObject;
-        int jumpAddr, loopAddr, elemSize, indexSize;
+        int jumpAddr, loopAddr, arraySize, indexSize;
 
-        elemSize = ((Integer)ast.IVD.visit(this, frame)).intValue();
-        //Frame frame1 = new Frame(frame, )
-        emit(Machine.LOADop, 1, Machine.STr, 0);
+        arraySize = ((Integer)ast.IVD.visit(this, frame)).intValue();
+        Frame frame1 = new Frame(frame, arraySize);
+        emit(Machine.LOADLop, 0, 0, arraySize);
+        emit(Machine.LOADLop, 0, 0, 0);
+        jumpAddr = nextInstrAddr;
+        emit(Machine.JUMPop, 0, Machine.CBr, 0);
         loopAddr = nextInstrAddr;
-        emit(Machine.LOADop, 1, Machine.SBr, 0);
+        emit(Machine.CALLIop, 0, Machine.CBr, Machine.succDisplacement);
         ast.C.visit(this, frame);
+        emit(Machine.LOADop, 2, Machine.STr, -2);
+        patch(jumpAddr, nextInstrAddr);
         emit(Machine.CALLop, 0, Machine.SBr, Machine.geDisplacement);
+        emit(Machine.JUMPIFop, Machine.falseRep, Machine.CBr, loopAddr);
+        
         return null;
     }
 
@@ -1181,10 +1238,10 @@ public final class Encoder implements Visitor {
     @Override
     public Object visitInVarDecl(InVarDecl ast, Object o) {
         Frame frame = (Frame) o;
-        
         int extraSize = ((Integer)ast.E.visit(this, frame)).intValue();
         ast.entity = new UnknownValue(extraSize, frame.level, frame.size);
-        return extraSize;
+        
+        return new Integer(extraSize);
     }
   
     @Override
@@ -1201,9 +1258,19 @@ public final class Encoder implements Visitor {
 
     @Override
     public Object visitIfSequencialCommand(IfSequencialCommand ast, Object o) {
-        ast.E.visit(this, null);
-        ast.C1.visit(this, null);
-        ast.C2.visit(this, null);
+        Frame frame = (Frame) o;
+        int jumpifAddr, jumpAddr;
+
+        ast.E.visit(this, frame);
+        jumpifAddr = nextInstrAddr;
+        emit(Machine.JUMPIFop, Machine.falseRep, Machine.CBr, jumpifAddr);
+        ast.C1.visit(this, frame);
+        jumpAddr = nextInstrAddr;
+        emit(Machine.JUMPop, 0, Machine.CBr, 0);
+        patch(jumpifAddr, nextInstrAddr);
+        ast.C2.visit(this, frame);
+        patch(jumpAddr, nextInstrAddr);
+        
         return null;
     }
 
