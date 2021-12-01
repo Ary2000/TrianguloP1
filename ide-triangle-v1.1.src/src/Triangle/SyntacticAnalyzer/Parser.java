@@ -14,6 +14,8 @@
 
 package Triangle.SyntacticAnalyzer;
 
+import java.util.ArrayList;
+
 import Triangle.ErrorReporter;
 import Triangle.AbstractSyntaxTrees.ActualParameter;
 import Triangle.AbstractSyntaxTrees.ActualParameterSequence;
@@ -400,6 +402,10 @@ public class Parser {
     return elseCaseAST;
   }
    
+//   Command trabajarIfs(){
+//       
+//   }
+   
    Command parseSingleCommand() throws SyntaxError {
     Command commandAST = null; // in case there's a syntactic error
 
@@ -450,19 +456,36 @@ public class Parser {
         Expression eAST = parseExpression();
         accept(Token.THEN);
         Command c1AST = parseCommand();
+        ArrayList<Expression> arregloExpresiones = new ArrayList<>();
+        ArrayList<Command> arregloComandos = new ArrayList<>();
+        arregloExpresiones.add(eAST);
+        arregloComandos.add(c1AST);
         while(currentToken.kind==Token.LINE) {
             acceptIt();
             Expression extraExpr = parseExpression();
             accept(Token.THEN);
             Command extraCmd = parseCommand();
+            arregloExpresiones.add(extraExpr);
+            arregloComandos.add(extraCmd);
             //Preguntar sobre commandPos
-            c1AST = new IfSequencialCommand(c1AST, extraExpr, extraCmd, commandPos);
+            //c1AST = new IfSequencialCommand(c1AST, eAST, extraCmd, commandPos);
+            
         }
         accept(Token.ELSE);
         Command c2AST = parseCommand();
+        arregloComandos.add(c2AST);
         accept(Token.END);
+        Command comandoFinal = new EmptyCommand(commandPos);
+        for(int i = arregloExpresiones.size() - 1; i >= 0; i--){
+            if(i == arregloExpresiones.size() - 1){
+                comandoFinal = new IfSequencialCommand(arregloComandos.get(i), arregloExpresiones.get(i), arregloComandos.get(i+1), commandPos);
+            }
+            else {
+                comandoFinal = new IfSequencialCommand(arregloComandos.get(i), arregloExpresiones.get(i), comandoFinal, commandPos);
+            }
+        }
         finish(commandPos);
-        commandAST = new IfCommand(eAST, c1AST, c2AST, commandPos);
+        commandAST = comandoFinal;
       }
       break;
     // Implementacion de las alternativas repeat  
