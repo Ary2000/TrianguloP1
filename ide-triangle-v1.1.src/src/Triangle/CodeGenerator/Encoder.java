@@ -1069,7 +1069,12 @@ public final class Encoder implements Visitor {
   
     @Override
     public Object visitSequentialProcFunc(SequentialProcFunc ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Frame frame = (Frame) o;
+        int extraSize1, extraSize2,jumpAddr,jumpAddr2;
+        extraSize1 = ((Integer) ast.PF1.visit(this, frame)).intValue();
+        Frame frame1 = new Frame (frame, extraSize1);
+        extraSize2 = ((Integer) ast.PF2.visit(this, frame1)).intValue();
+        return new Integer(extraSize1 + extraSize2);
     }
 
     @Override
@@ -1089,7 +1094,10 @@ public final class Encoder implements Visitor {
   
     @Override
     public Object visitRecursiveDeclaration(RecursiveDeclaration ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Frame frame = (Frame) o;
+        int extraSize1;
+        extraSize1 = ((Integer) ast.P.visit(this, frame)).intValue();
+        return new Integer(extraSize1);
     }
 
     @Override
@@ -1109,7 +1117,13 @@ public final class Encoder implements Visitor {
   
     @Override
     public Object visitLocalDeclaration(LocalDeclaration ast, Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Frame frame = (Frame) o;
+        int extraSize1, extraSize2;
+        extraSize1 = ((Integer) ast.D1.visit(this, frame)).intValue();
+        Frame frame1 = new Frame (frame, extraSize1);
+        extraSize2 = ((Integer) ast.D2.visit(this, frame1)).intValue();
+        return new Integer(extraSize1 + extraSize2);
+        
     }
 
     @Override

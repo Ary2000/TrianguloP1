@@ -1193,9 +1193,9 @@ public final class Checker implements Visitor {
     @Override
     public Object visitLocalDeclaration(LocalDeclaration ast, Object o) {
         idTable.beginLocal(); //openPrivate
-        ast.D1.visit(this, null);
+        ast.T = (TypeDenoter) ast.D1.visit(this, null);
         idTable.beginIn();   //openPublic
-        ast.D2.visit(this, null);
+        ast.T = (TypeDenoter) ast.D2.visit(this, null);
         idTable.endLocal();  //close private
         return null;
     }
